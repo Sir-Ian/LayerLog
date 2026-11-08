@@ -28,7 +28,7 @@ The prior official-source review reported a December 22, 2026 deadline at 2 p.m.
 - Contest-specific permission/disclosure requirements for AI coding assistance remain unresolved. Official AI tooling documentation is not itself a contest ruling.
 - Forge free allowances, payment-method requirements, optional AI costs, and the current demo-site offer need checking before setup.
 - Choose and validate the exact storage, attachment, and UI architecture during the scaffold milestone.
-- Remote repository owner, service, and visibility are not yet chosen. No remote backup exists.
+- Remote: Ian approved the private GitHub repository https://github.com/Sir-Ian/LayerLog under his authenticated personal account, Sir-Ian. Keep it private; verify pushed refs after each push.
 - No open-source license has been selected. Do not add one without Ian's decision.
 
 ## Recording future decisions

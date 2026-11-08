@@ -23,7 +23,7 @@ Create branches when work begins, not an empty branch for every future milestone
 - Inspect installed development tools before installing or upgrading anything.
 - Complete Forge CLI authentication through a secure flow. Never put a token in chat, source, logs, or command history.
 - Check available developer-site options and current Forge billing requirements. Ask before billing setup or paid services; do not assume account creation makes all usage free.
-- Agree a remote hosting destination and visibility before creating or pushing a remote repository. Local Git alone is not off-device backup.
+- The approved remote is the private Sir-Ian/LayerLog repository on GitHub. Verify remote commit IDs after pushing. Do not change visibility without authorization.
 
 ## Verification as the app grows
 
