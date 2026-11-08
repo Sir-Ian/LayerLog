@@ -14,6 +14,6 @@ LayerLog is a Jira app built on Atlassian Forge that keeps a 3D-print project's 
 
 ## Status
 
-Planning foundation only, created November 8, 2026. No application scaffold, dependencies, Forge registration, deployment, or remote Git repository yet. Ian has created a personal Atlassian account and signed in through his browser. Browser sign-in does not establish Forge CLI authentication.
+Planning foundation only, created November 8, 2026. No application scaffold, dependencies, Forge registration, or deployment yet. The private GitHub repository is [Sir-Ian/LayerLog](https://github.com/Sir-Ian/LayerLog). Ian has created a personal Atlassian account and signed in through his browser. Browser sign-in does not establish Forge CLI authentication.
 
 The initial target is Codegeist 2026, with a proposed manufacturing/specialized-industries entry. Contest requirements and pricing must be rechecked before implementation and submission. Ian reviews and submits the contest entry himself.

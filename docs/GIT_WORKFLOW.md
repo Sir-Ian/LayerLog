@@ -52,7 +52,7 @@ Give each agent a separate branch and worktree. Coordinate shared files before s
 
 ## Remote backup and review
 
-This repository is currently local only. Before adding a remote, confirm the owner, destination, visibility, and publication scope. Once approved, push verified commits and verify the remote commit IDs. Use draft pull requests for review unless Ian requests otherwise. Local merge discipline is a convention, not enforced branch protection; configure remote protections only after a host is chosen and authorized.
+The approved remote is `origin`, pointing to the private GitHub repository `Sir-Ian/LayerLog`. Keep visibility private. For authorized work, push verified commits and verify the remote commit IDs; do not assume a local commit has been backed up. Use draft pull requests for review unless Ian requests otherwise. Local merge discipline is a convention, not enforced branch protection; configure remote protections only after a host is chosen and authorized.
 
 ## Identity
 
