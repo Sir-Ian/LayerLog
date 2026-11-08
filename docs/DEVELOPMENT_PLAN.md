@@ -8,7 +8,7 @@ Keep domain validation and comparison logic independent of UI and platform calls
 
 ## Milestones and suggested branches
 
-1. `chore/forge-scaffold`: confirm contest/AI and cost gates, secure CLI authentication, verify supported runtime, scaffold and smoke-test the smallest issue panel.
+1. `chore/forge-scaffold`: record contest/AI assumption and confirm cost gates, secure CLI authentication, verify supported runtime, scaffold and smoke-test the smallest issue panel.
 2. `feat/print-attempts`: define schema and validation; implement persistence and add/edit/list flows with tests.
 3. `feat/revision-comparison`: implement comparison and deterministic evidence checklist, with unit tests and a readable interface.
 4. `feat/demo-workflow`: add labeled sample gear data, polish empty/error states and accessibility, test end-to-end behavior.
@@ -19,7 +19,7 @@ Create branches when work begins, not an empty branch for every future milestone
 
 ## Before development starts
 
-- Confirm current Codegeist eligibility, category, deliverables, and whether AI coding assistance is allowed. The published rules were not explicit in prior research.
+- Recheck Codegeist requirements before submission. Ian has authorized starting on the assumption that AI coding assistance is allowed; no organizer ruling has been established.
 - Inspect installed development tools before installing or upgrading anything.
 - Complete Forge CLI authentication through a secure flow. Never put a token in chat, source, logs, or command history.
 - Check available developer-site options and current Forge billing requirements. Ask before billing setup or paid services; do not assume account creation makes all usage free.
@@ -42,13 +42,13 @@ This is a proposed implementation sequence, not evidence that an app exists. Sta
 
 Owner: the next scaffold agent, with Ian handling credentials and organizer clarification.
 
-1. Resolve the AI-assistance question recorded in [Decisions](DECISIONS.md). Preserve the organizer's answer and source/date before substantial AI-assisted implementation.
+1. Follow Ian's decision to proceed with AI assistance, recorded in [Decisions](DECISIONS.md). Any later organizer clarification should be recorded with its source/date.
 2. Inspect Node, package manager, and Forge CLI versions without reading credential files. Verify supported versions against current Forge documentation; pin the chosen runtime and package manager in setup instructions.
 3. Verify development-site availability, usage allowances, and payment requirements. Browser login is not CLI authentication. Let Ian complete any necessary secure authentication; never request a token in chat.
 4. Select the smallest supported Jira issue-panel template. Prefer UI Kit if its supported controls cover the forms and comparison; use Custom UI only if a specific requirement warrants it. Record the choice, storage API, scope list, and current documentation sources.
 5. Separate local scaffolding from Forge registration, installation, and deployment. Record the intended development site and obtain authorization for account mutations/deployment before executing them.
 
-Exit evidence: a dated environment record, resolved rules gate, dependency versions, chosen architecture, and an explicit account/deployment scope. Unavailable access is a blocker, not a successful smoke test.
+Exit evidence: a dated environment record, recorded contest assumption, dependency versions, chosen architecture, and an explicit account/deployment scope. Unavailable access is a blocker, not a successful smoke test.
 
 ### Milestone 1: smallest issue panel (`chore/forge-scaffold`)
 
