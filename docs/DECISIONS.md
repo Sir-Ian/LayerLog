@@ -74,3 +74,12 @@ Source: authenticated Forge CLI registration check and [Atlassian Developer Spac
 - Ian completed CLI login. Validation now rejects the unregistered placeholder app ID.
 - Forge reports no Developer Space membership. Registration was canceled before entering a new space name; no app or space was created.
 - Space creation assigns the creator as admin and links a billing account. Ian's decision is requested before creating LayerLog's space; no billing consent, payment method, or deployment is authorized by this check.
+
+
+## November 8, 2026 — space created; billing consent declined
+
+Source: Ian's explicit approval to create the LayerLog space while stopping before billing consent, and the subsequent Forge CLI output.
+
+- Created the Developer Space named LayerLog; the CLI confirmed success.
+- App registration required consent to be billed when any Forge app in the space exceeds its free allowance. Answered No under Ian's restriction. Registration did not complete; the manifest is unchanged.
+- No payment method was added and nothing was deployed. Local development remains available; registration is pending an explicit billing-consent decision from Ian.

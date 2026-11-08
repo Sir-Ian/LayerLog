@@ -73,3 +73,10 @@ Ian completed CLI login. A new `npm run forge -- lint` invocation passed the mis
 `npm run forge -- register LayerLog --personal` reached the authenticated account's Developer Space check. Forge reported no Developer Space membership and prompted to create one. The command was canceled at the name prompt: no space or app was created, and the manifest remains unchanged.
 
 Next: obtain Ian's decision to create a Developer Space named LayerLog and register the app. Space creation links a billing account, so stop before any billing consent or payment setup. Then rerun Forge lint with the real app ID. The Jira installation target still needs selection.
+
+
+## Developer Space created — November 8, 2026
+
+Ian authorized creating the LayerLog Developer Space and registering the app, with an explicit stop before billing consent. The CLI confirmed creation of the **LayerLog** space. Registration then presented combined Developer Terms, Privacy Policy, and excess-usage billing consent. The agent answered **No**, as instructed; registration exited with “You must accept the terms and conditions.”
+
+The space exists. The app remains unregistered, the manifest placeholder is unchanged, and no deployment occurred. Further registration requires Ian's explicit decision about the excess-usage billing agreement. Local implementation and checks can continue independently.
