@@ -10,11 +10,12 @@ On Ian's Apple Silicon Mac, Node was installed through the existing Homebrew ins
 export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 cd /Users/iandeuberry/Projects/LayerLog
 npm ci
+npm run setup:forge
 npm run check
 npm run forge -- --version
 ```
 
-On other machines, install a Forge-supported Node 22 release (at least 22.23.4), then run `npm ci`. See [Atlassian's setup guide](https://developer.atlassian.com/platform/forge/getting-started/).
+On other machines, install a Forge-supported Node 22 release (at least 22.23.4), then run `npm ci` and `npm run setup:forge`. See [Atlassian's setup guide](https://developer.atlassian.com/platform/forge/getting-started/).
 
 ## Checks
 
@@ -24,7 +25,9 @@ On other machines, install a Forge-supported Node 22 release (at least 22.23.4),
 | `npm run typecheck` | Strict TypeScript checks application and tests. |
 | `npm test` | Node's test runner checks issue identity validation, access failures, and safe errors using an injected Jira adapter. |
 | `npm run build` | TypeScript compiles source into ignored `dist/`; this is a local compilation check, not Forge deployment packaging. |
-| `npm run check` | Runs the four checks above in order. |
+| `npm run test:toolchain` | Checks the patched dependency APIs used by Forge. |
+| `npm run check` | Runs lint, typecheck, app tests, toolchain tests, and build. |
+| `npm run audit:all` | Audits both the app and the isolated Forge toolchain. |
 | `npm run forge -- lint` | Forge-specific manifest/API checks; may require authenticated account access. |
 | `git diff --check` | Checks changed lines for whitespace errors. |
 
@@ -51,7 +54,7 @@ The ready screen intentionally explains that attempt recording is the next miles
 
 ## Dependency review
 
-**Current result:** production audit is clean after targeted overrides; 40 full-tree findings remain in the Forge CLI dependency chain. See the [dated review](reviews/DEPENDENCIES_2026-11-08.md) for compatibility checks and limitations. The initial counts below are historical.
+**Current result:** app and isolated Forge CLI toolchain audits both report zero vulnerabilities. The earlier 40 toolchain findings were resolved by installing unchanged official CLI code with a reviewed dependency lock. See the [dated review](reviews/DEPENDENCIES_2026-11-08.md) and [toolchain setup](../tools/forge/README.md) for compatibility checks and maintenance. The initial counts below are historical.
 
 Initial installation on November 8, 2026 reported upstream advisories. `npm audit fix` did not clear them: the full dependency tree reported 55 (3 low, 28 moderate, 21 high, 3 critical), and `npm audit --omit=dev` reported 12 (4 moderate, 8 high). Production findings include transitive ProseMirror paste handling and glob/minimatch dependencies. This scaffold does not expose a rich-text editor or accept glob patterns, but that does not establish that dependencies are safe.
 
@@ -137,3 +140,10 @@ Ian authorized the demo-site request without app deployment or installation. `np
 - Expiry reported by Atlassian: **2027-02-06** (no time or timezone supplied).
 
 No payment details or additional billing-consent prompt appeared during provisioning. This observation is not a guarantee about future Forge usage charges. No LayerLog deployment or installation was performed. Next: review dependency findings, then obtain approval for a development-only deployment and installation to this exact site. Preserve any needed demo evidence before the site expires; do not assume automatic extension.
+
+
+## Patched toolchain ready — November 8, 2026
+
+Use `npm run setup:forge` after a fresh checkout's `npm ci`. The Forge executable is downloaded from the official npm package, verified against a pinned SHA-512 hash, and run with the dependency tree committed in `tools/forge/package-lock.json`. This is a project-maintained dependency composition; the executable source is not modified. No global CLI replacement or credential change is required.
+
+`npm run audit:all` now audits both roots and passes with zero vulnerabilities. `npm run check` includes five app tests and four toolchain tests. Authenticated Forge lint passes. The earlier dependency blocker is resolved for the verified local workflow; live deployment and UI verification remain separate next steps requiring the previously agreed authorization. No app code was deployed during remediation.

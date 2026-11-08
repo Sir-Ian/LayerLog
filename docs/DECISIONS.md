@@ -119,3 +119,13 @@ Source: registry audit and installed package analysis, recorded in the [dependen
 - Added exact patched overrides for ProseMirror view, glob, and minimatch. Production audit is now clean after a reproducible `npm ci`; local checks, five tests, manifest glob integration, and Forge lint pass.
 - Full audit still reports 40 affected packages through Forge CLI 15.0.0's shipped shrinkwrap. Root overrides did not fix that nested tree and ineffective overrides were removed. No vendor code edits, SDK downgrade, deployment, or risk waiver occurred.
 - Keep local development available, but treat the unresolved CLI toolchain findings as an outstanding deployment review item. The full inventory and limits are in the review; do not describe the full dependency tree as clean.
+
+
+## November 8, 2026 — resolve CLI dependency blocker
+
+Source: Ian's request to own and solve the technical blocker; clean installs, audits, and CLI verification in this session.
+
+- Keep official Forge CLI 15.0.0 executable code unchanged and verify its npm archive by pinned SHA-512. Resolve its dependencies at an isolated project install root with a committed reviewed lock, instead of relying on its vulnerable published shrinkwrap.
+- Both app and toolchain audits now pass with zero vulnerabilities. `audit:all` explicitly covers both; no findings are hidden by excluding development dependencies. Retain API compatibility tests for the changed major versions.
+- This is a project-maintained dependency composition, not a claim of vendor support for the modified lock. Prefer a conventional vendor CLI install again once a clean compatible release is available.
+- The prior CLI dependency blocker is resolved for local validation. No deployment, installation, account/billing change, or external report was made. See [toolchain maintenance](../tools/forge/README.md).

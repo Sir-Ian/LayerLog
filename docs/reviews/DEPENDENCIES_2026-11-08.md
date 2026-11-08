@@ -1,6 +1,16 @@
 # Dependency review — November 8, 2026
 
-## Result
+## Final result after toolchain remediation
+
+**Both the application and Forge toolchain audits now report zero vulnerabilities.** The earlier residual findings below are historical and are resolved in the installed, locked toolchain.
+
+The official CLI executable is unchanged and SHA-512 verified. Its dependencies are installed from a separately maintained manifest/lock in `tools/forge`, allowing patched versions to replace the vendor shrinkwrap. The former root CLI dependency was removed; it was not moved out of audit scope. `npm run audit:all` explicitly audits both install roots. See [toolchain setup and maintenance](../../tools/forge/README.md).
+
+Validation: clean bootstrap (`npm ci` in the toolchain), clean root `npm ci`, application checks, four toolchain API compatibility tests, CLI version 15.0.0, deploy/install command help, and authenticated Forge lint. Both audits exit 0. No deployment or artifact upload was performed. Live installation/rendering tests remain the next integration check, not a dependency-audit blocker.
+
+This custom dependency composition is project-maintained, not Atlassian's vendor-tested shrinkwrap. All CLI features have not been exercised. Keep both audits and the compatibility checks in the documented workflow; a clean audit does not guarantee the absence of unknown vulnerabilities.
+
+## Earlier review result (superseded)
 
 Application dependencies: **0 npm-reported vulnerabilities**, reproduced after `npm ci`. Full tree: **40 findings remain** (3 low, 21 moderate, 13 high, 3 critical). This is a completed review with app fixes and a remaining upstream CLI blocker, not a clean full-tree security assessment or a deployment approval.
 
@@ -22,7 +32,7 @@ The ProseMirror override is within major 1. LayerLog currently has no rich-text 
 
 Sources: [ProseMirror advisory](https://github.com/ProseMirror/prosemirror-view/security/advisories/GHSA-c8x8-7fp4-3x9w), npm registry audit responses, and installed package manifests. [npm override documentation](https://docs.npmjs.com/cli/v10/configuring-npm/package-json/#overrides).
 
-## Why the CLI remains affected
+## Why the original CLI install remained affected (resolved above)
 
 `@forge/cli` 15.0.0 is the current published latest version checked during this review. It ships `npm-shrinkwrap.json`, pinning nested versions. Compatible audit fixes and explicit root overrides did not replace its affected nested dependencies; a clean installation confirmed this. Ineffective overrides were removed. The SDK/CLI were not downgraded and vendor files were not edited or repackaged.
 
@@ -43,7 +53,7 @@ Current limits: do not expose a Forge tunnel/dev server, run the CLI over untrus
 
 Repeat with `npm run audit:production` and `npm run audit:all`. Audit requires registry access. A later clean audit is evidence for that date, not a guarantee of security.
 
-## Remaining direct advisory inventory
+## Original direct advisory inventory (resolved in patched toolchain)
 
 These rows identify leaf advisories, excluding ancestor-only reports. All paths below are relative to `node_modules/@forge/cli/`.
 
