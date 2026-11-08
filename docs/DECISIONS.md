@@ -110,3 +110,12 @@ Source: Ian's approval to create the demo development site and Forge CLI's retur
 - Demo site `one-atlas-xldf` is active at https://one-atlas-xldf.atlassian.net and expires February 6, 2027. The CLI did not supply an expiry time or timezone.
 - Provisioning completed after the initial CLI watcher timed out. The next status retrieval returned the existing active site; no second site was created.
 - No payment method, new billing consent, deployment, or LayerLog installation was performed. The existing restrictions on deployment and cost controls remain in force.
+
+
+## November 8, 2026 — dependency remediation and residual CLI risk
+
+Source: registry audit and installed package analysis, recorded in the [dependency review](reviews/DEPENDENCIES_2026-11-08.md).
+
+- Added exact patched overrides for ProseMirror view, glob, and minimatch. Production audit is now clean after a reproducible `npm ci`; local checks, five tests, manifest glob integration, and Forge lint pass.
+- Full audit still reports 40 affected packages through Forge CLI 15.0.0's shipped shrinkwrap. Root overrides did not fix that nested tree and ineffective overrides were removed. No vendor code edits, SDK downgrade, deployment, or risk waiver occurred.
+- Keep local development available, but treat the unresolved CLI toolchain findings as an outstanding deployment review item. The full inventory and limits are in the review; do not describe the full dependency tree as clean.

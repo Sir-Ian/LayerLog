@@ -51,6 +51,8 @@ The ready screen intentionally explains that attempt recording is the next miles
 
 ## Dependency review
 
+**Current result:** production audit is clean after targeted overrides; 40 full-tree findings remain in the Forge CLI dependency chain. See the [dated review](reviews/DEPENDENCIES_2026-11-08.md) for compatibility checks and limitations. The initial counts below are historical.
+
 Initial installation on November 8, 2026 reported upstream advisories. `npm audit fix` did not clear them: the full dependency tree reported 55 (3 low, 28 moderate, 21 high, 3 critical), and `npm audit --omit=dev` reported 12 (4 moderate, 8 high). Production findings include transitive ProseMirror paste handling and glob/minimatch dependencies. This scaffold does not expose a rich-text editor or accept glob patterns, but that does not establish that dependencies are safe.
 
 Do not use `npm audit fix --force` blindly: its suggested changes include major Forge SDK downgrades. Resolve or assess affected dependency paths before a deployment. Upstream React peer/deprecation warnings are also recorded; compilation alone does not prove runtime compatibility.
