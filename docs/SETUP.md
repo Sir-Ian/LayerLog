@@ -106,3 +106,20 @@ npm run forge -- uninstall --site YOUR_TEST_SITE.atlassian.net --product Jira --
 - Closing the browser or stopping a local tunnel does not remove a hosted installation. There is no always-running server in this scaffold to switch off. Avoid equating an idle app or an uninstall with a guaranteed zero balance: accrued usage still counts, and future SQL or other retained resources can have storage/reservation costs.
 
 Sources checked November 8, 2026: [Forge pricing](https://developer.atlassian.com/platform/forge/forge-platform-pricing/) (free allowances, usage charges, SQL stored-data billing) and [Forge uninstall](https://developer.atlassian.com/platform/forge/cli-reference/uninstall/) (site/environment-targeted removal). No uninstall is needed now because no app installation has been created.
+
+
+## Development-site preparation — November 8, 2026
+
+The signed-in in-app browser showed no Jira site in Atlassian Home's app switcher. Forge CLI 15.0.0 supports `site provision`; its help command was checked successfully without requesting a site.
+
+Proposed next action, pending Ian's site-creation approval:
+
+```sh
+npm run forge -- site provision
+```
+
+This requests a demo site or returns an existing active one. It does not deploy LayerLog. The documented site includes Jira, other Atlassian apps, and seeded sample data, and is active for 90 days by default. Record the actual URL and expiry returned by provisioning. The CLI cannot extend or deactivate the site. Canceling the CLI after submission does not cancel a provisioning request, so do not run it merely to inspect account state.
+
+Stop on any new payment requirement or billing consent. The provisioning guide does not explicitly state a site price; do not promise zero cost based on the word “demo.” Forge runtime usage remains subject to its separate free allowances and overage agreement. Deployment and installation remain separate authorization steps.
+
+Source: [Provision a demo development site](https://developer.atlassian.com/platform/forge/provision-a-demo-development-site/), checked November 8, 2026. No site was provisioned during this preparation.

@@ -93,3 +93,11 @@ Source: Ian's explicit approval to accept terms and register, followed by his re
 - Standard registration succeeded in the existing LayerLog space after personal registration was rejected. The manifest now contains the real app ID; `npm run forge -- lint` passed with no issues.
 - Prefer local testing and on-demand functionality. Avoid background polling, schedules, containers, and paid AI services. Review usage around hosted test sessions and remove unused test installations after preserving required data. Detailed shutdown instructions are in [Setup](SETUP.md).
 - Registration/billing-consent blockers are resolved. Remaining before hosted testing: dependency advisory review, Jira site selection, and development-deployment authorization. No ongoing monitoring or automatic shutdown job has been configured.
+
+
+## November 8, 2026 — proposed demo site
+
+Source: signed-in Atlassian Home app switcher, installed CLI help, and [official demo-site guide](https://developer.atlassian.com/platform/forge/provision-a-demo-development-site/).
+
+- No Jira site was visible for the browser account. The installed CLI supports a standalone demo-site request, so no app deployment is needed to obtain a test site.
+- Proposed demo-site provisioning is pending Ian's approval. Respect the existing limits: no new billing consent, payment setup, or app deployment as part of this step. Record actual expiry because the default 90-day lifetime may not cover every later demo or judging date.
