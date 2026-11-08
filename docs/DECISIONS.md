@@ -56,3 +56,12 @@ Source: Ian's instruction in the project chat to assume AI assistance is allowed
 - Manual entry, Jira attachment references, and comparison remain the first-version scope.
 - Begin `chore/forge-scaffold`: local Node/npm tooling, a TypeScript Forge UI Kit issue panel, and repeatable checks. Use native Atlassian components for this initial panel; visual product design comes with the attempt-entry milestone.
 - Account authentication, app registration, development-site selection, and any billing consent remain separate setup steps. No credentials, paid services, or deployment are needed for local compilation and unit tests.
+
+
+## November 8, 2026 — local scaffold architecture
+
+- Use native UI Kit with a TypeScript resolver; keep the initial surface within Atlassian's existing design system. Sources: [issue panel](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-issue-panel/) and [resolver](https://developer.atlassian.com/platform/forge/runtime-reference/forge-resolver/) documentation, checked today.
+- Node 22.23.4 was installed with the existing Homebrew; npm dependencies and Forge CLI are pinned locally. No shell profile was edited.
+- The resolver validates its context issue ID and uses Jira `asUser()` to check access. Only `read:jira-work` is requested; storage and writes are deferred to the next milestone.
+- UI Kit's issue-panel button is limited to users with issue edit permission according to Atlassian's module documentation. Read-only viewing needs a separate surface decision if it becomes a requirement.
+- Local checks do not establish a working installation. Authentication, real registration/site selection, live UI/permission checks, and dependency advisory review remain before development deployment. See [Setup](SETUP.md).

@@ -31,7 +31,7 @@ Establish documented lint, typecheck, unit-test, and build commands with the sca
 
 ## Current handoff
 
-Planning and Git version control are ready; private GitHub setup is recorded in the repository. This planning task does not verify live remote refs. There is no executable app or test suite yet. The next engineering task is the minimal Forge scaffold after the gates above are resolved, not an automatic deployment or contest submission.
+Planning and Git version control are ready; private GitHub setup is recorded in the repository. This planning task does not verify live remote refs. The local Forge scaffold now includes a native issue panel and unit tests. See [Setup](SETUP.md) for actual commands and account prerequisites. Next: authenticate/register for the authorized development site, verify the panel in Jira, then implement attempt persistence.
 
 
 ## Implementation handoff — November 8, 2026
@@ -58,7 +58,7 @@ Suggested commit boundaries:
 - Add lint, typecheck, unit-test, and build scripts plus exact local setup commands.
 - Add the panel's empty/loading/error states and document the authorized development installation smoke check.
 
-Proposed layout, adjusted to the supported template: `src/domain/` for records and pure rules; `src/backend/` for resolvers, authorization, and storage; `src/frontend/` for the panel; `tests/` for behavior tests; `docs/` for setup and decisions. These directories do not exist yet.
+Proposed layout, adjusted to the supported template: `src/domain/` for records and pure rules; `src/backend/` for resolvers, authorization, and storage; `src/frontend/` for the panel; `tests/` for behavior tests; `docs/` for setup and decisions. The initial scaffold uses the frontend/backend/shared directories; domain records will be added with persistence.
 
 Done when: documented local checks pass, the panel can identify its authorized issue context, and any authorized development installation opens correctly. If no deployment is authorized, report the integration check as unrun and the milestone as locally verified only.
 
