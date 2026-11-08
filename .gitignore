@@ -1,0 +1,29 @@
+# Local OS/editor state
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Dependencies, builds, and test output
+node_modules/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Credentials and machine-specific state (never commit secrets)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.forge/
+
+# Local work and logs
+.worktrees/
+.tmp/
+*.log
