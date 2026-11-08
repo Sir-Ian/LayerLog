@@ -101,3 +101,12 @@ Source: signed-in Atlassian Home app switcher, installed CLI help, and [official
 
 - No Jira site was visible for the browser account. The installed CLI supports a standalone demo-site request, so no app deployment is needed to obtain a test site.
 - Proposed demo-site provisioning is pending Ian's approval. Respect the existing limits: no new billing consent, payment setup, or app deployment as part of this step. Record actual expiry because the default 90-day lifetime may not cover every later demo or judging date.
+
+
+## November 8, 2026 — demo development site provisioned
+
+Source: Ian's approval to create the demo development site and Forge CLI's returned site details.
+
+- Demo site `one-atlas-xldf` is active at https://one-atlas-xldf.atlassian.net and expires February 6, 2027. The CLI did not supply an expiry time or timezone.
+- Provisioning completed after the initial CLI watcher timed out. The next status retrieval returned the existing active site; no second site was created.
+- No payment method, new billing consent, deployment, or LayerLog installation was performed. The existing restrictions on deployment and cost controls remain in force.

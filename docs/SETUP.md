@@ -32,7 +32,7 @@ Native UI Kit renders inside Jira. It is not a standalone website, and there is 
 
 ## Authentication and development deployment
 
-The app is **registered but not deployed or installed**. `manifest.yml` contains the real app ID from registration in the LayerLog Developer Space. The dated notes below preserve the setup history.
+The app is **registered but not deployed or installed**. The demo development site is https://one-atlas-xldf.atlassian.net (active; expires February 6, 2027). `manifest.yml` contains the real app ID from registration in the LayerLog Developer Space. The dated notes below preserve the setup history.
 
 For future account setup and development deployment (login and registration are already complete on Ian's Mac):
 
@@ -123,3 +123,15 @@ This requests a demo site or returns an existing active one. It does not deploy 
 Stop on any new payment requirement or billing consent. The provisioning guide does not explicitly state a site price; do not promise zero cost based on the word “demo.” Forge runtime usage remains subject to its separate free allowances and overage agreement. Deployment and installation remain separate authorization steps.
 
 Source: [Provision a demo development site](https://developer.atlassian.com/platform/forge/provision-a-demo-development-site/), checked November 8, 2026. No site was provisioned during this preparation.
+
+
+## Demo site active — November 8, 2026
+
+Ian authorized the demo-site request without app deployment or installation. `npm run forge -- site provision` submitted the request; its initial watcher timed out while provisioning continued remotely. A subsequent invocation returned the existing site:
+
+- Name: `one-atlas-xldf`
+- URL: https://one-atlas-xldf.atlassian.net
+- Status: **active**
+- Expiry reported by Atlassian: **2027-02-06** (no time or timezone supplied).
+
+No payment details or additional billing-consent prompt appeared during provisioning. This observation is not a guarantee about future Forge usage charges. No LayerLog deployment or installation was performed. Next: review dependency findings, then obtain approval for a development-only deployment and installation to this exact site. Preserve any needed demo evidence before the site expires; do not assume automatic extension.
