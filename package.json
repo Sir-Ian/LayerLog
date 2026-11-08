@@ -12,7 +12,9 @@
     "test": "node --import tsx --test tests/*.test.ts",
     "build": "tsc --project tsconfig.build.json",
     "check": "npm run lint && npm run typecheck && npm test && npm run build",
-    "forge": "forge"
+    "forge": "forge",
+    "audit:production": "npm audit --omit=dev",
+    "audit:all": "npm audit"
   },
   "dependencies": {
     "@forge/api": "8.4.0",
@@ -31,5 +33,10 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.72.1"
   },
-  "packageManager": "npm@10.9.9"
+  "packageManager": "npm@10.9.9",
+  "overrides": {
+    "prosemirror-view": "1.42.9",
+    "glob@>=9": "14.0.4",
+    "minimatch@>=7": "11.0.5"
+  }
 }
