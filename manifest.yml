@@ -1,0 +1,23 @@
+modules:
+  jira:issuePanel:
+    - key: layerlog-issue-panel
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: LayerLog
+      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: src/frontend/index.tsx
+permissions:
+  scopes:
+    - read:jira-work
+app:
+  runtime:
+    name: nodejs22.x
+  # Unregistered local scaffold. Replace through `npm run forge -- register` after login.
+  id: ari:cloud:ecosystem::app/00000000-0000-0000-0000-000000000000
