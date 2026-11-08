@@ -64,3 +64,12 @@ Do not use `npm audit fix --force` blindly: its suggested changes include major 
 - `npm run forge -- lint`: blocked by missing Forge login. Initial sandboxed execution failed writing CLI state; unrestricted execution reached a first-run telemetry prompt. Optional local CLI usage analytics was disabled, and the next run explicitly reported “Not logged in.” No account credentials were read or entered.
 - Live installation, rendered UI, and Jira permission tests: unrun; require authentication, real registration, target site, and authorized deployment.
 - Dependency audit: findings remain as listed above; audit is not passing.
+
+
+## Login follow-up — November 8, 2026
+
+Ian completed CLI login. A new `npm run forge -- lint` invocation passed the missing-login stage but rejected the all-zero placeholder app ID; Forge validation is still not passing.
+
+`npm run forge -- register LayerLog --personal` reached the authenticated account's Developer Space check. Forge reported no Developer Space membership and prompted to create one. The command was canceled at the name prompt: no space or app was created, and the manifest remains unchanged.
+
+Next: obtain Ian's decision to create a Developer Space named LayerLog and register the app. Space creation links a billing account, so stop before any billing consent or payment setup. Then rerun Forge lint with the real app ID. The Jira installation target still needs selection.

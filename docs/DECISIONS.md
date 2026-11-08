@@ -65,3 +65,12 @@ Source: Ian's instruction in the project chat to assume AI assistance is allowed
 - The resolver validates its context issue ID and uses Jira `asUser()` to check access. Only `read:jira-work` is requested; storage and writes are deferred to the next milestone.
 - UI Kit's issue-panel button is limited to users with issue edit permission according to Atlassian's module documentation. Read-only viewing needs a separate surface decision if it becomes a requirement.
 - Local checks do not establish a working installation. Authentication, real registration/site selection, live UI/permission checks, and dependency advisory review remain before development deployment. See [Setup](SETUP.md).
+
+
+## November 8, 2026 — Developer Space prerequisite
+
+Source: authenticated Forge CLI registration check and [Atlassian Developer Space creation documentation](https://developer.atlassian.com/platform/forge/developer-space/create-developer-space/), reviewed today.
+
+- Ian completed CLI login. Validation now rejects the unregistered placeholder app ID.
+- Forge reports no Developer Space membership. Registration was canceled before entering a new space name; no app or space was created.
+- Space creation assigns the creator as admin and links a billing account. Ian's decision is requested before creating LayerLog's space; no billing consent, payment method, or deployment is authorized by this check.
