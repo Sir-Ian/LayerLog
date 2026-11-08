@@ -34,3 +34,14 @@ The prior official-source review reported a December 22, 2026 deadline at 2 p.m.
 ## Recording future decisions
 
 Add a dated entry with the choice, reason, source, and consequences. Separate user-approved choices from proposals and verification results. Keep this file short; move significant technical decisions into individual decision records if needed.
+
+
+## November 8, 2026 — implementation planning and rules recheck
+
+Source: the delegated planning request and the [official Codegeist 2026 rules](https://codegeist2026.devpost.com/rules), read November 8, 2026, especially section 4 (Intellectual Property).
+
+- The rules permit contracted technical assistance under entrant creativity/work-product and ownership conditions. The reviewed rules do not explicitly settle AI-generated code permission or disclosure. This is an unresolved interpretation, not a finding that AI coding is forbidden or permitted.
+- Next step for Ian: ask the organizer whether using Codex to generate/review implementation code is allowed and whether tool use must be disclosed. Suggested question: “May I use Codex for AI-assisted coding on my own project, and are there attribution or disclosure requirements?” No organizer message was sent by this task.
+- Substantial AI-assisted implementation remains gated by the existing project instructions. Planning documentation can proceed. No personal eligibility determination has been made.
+- The expanded development plan is a proposal: start with one issue-scoped create/reload flow, reference existing Jira attachments, and defer AI features and direct binary uploads. Verify actual platform APIs, permissions, storage concurrency, and pricing before implementation.
+- This task owns `docs/implementation-plan` in an isolated worktree. GitHub setup remains with its existing worker; no remote/account changes are part of this planning task.
