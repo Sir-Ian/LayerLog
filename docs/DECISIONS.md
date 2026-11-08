@@ -83,3 +83,13 @@ Source: Ian's explicit approval to create the LayerLog space while stopping befo
 - Created the Developer Space named LayerLog; the CLI confirmed success.
 - App registration required consent to be billed when any Forge app in the space exceeds its free allowance. Answered No under Ian's restriction. Registration did not complete; the manifest is unchanged.
 - No payment method was added and nothing was deployed. Local development remains available; registration is pending an explicit billing-consent decision from Ian.
+
+
+## November 8, 2026 — registration authorized and cost controls
+
+Source: Ian's explicit approval to accept terms and register, followed by his request to shut down unused activity and minimize charges.
+
+- Accepted Developer Terms, Privacy Policy, and excess-usage billing agreement as authorized. Created no payment method and made no deployment.
+- Standard registration succeeded in the existing LayerLog space after personal registration was rejected. The manifest now contains the real app ID; `npm run forge -- lint` passed with no issues.
+- Prefer local testing and on-demand functionality. Avoid background polling, schedules, containers, and paid AI services. Review usage around hosted test sessions and remove unused test installations after preserving required data. Detailed shutdown instructions are in [Setup](SETUP.md).
+- Registration/billing-consent blockers are resolved. Remaining before hosted testing: dependency advisory review, Jira site selection, and development-deployment authorization. No ongoing monitoring or automatic shutdown job has been configured.

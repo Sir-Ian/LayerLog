@@ -32,14 +32,14 @@ Native UI Kit renders inside Jira. It is not a standalone website, and there is 
 
 ## Authentication and development deployment
 
-The app is **not registered or deployed**. The all-zero app ID in `manifest.yml` is an explicit local placeholder, not a real Atlassian registration.
+The app is **registered but not deployed or installed**. `manifest.yml` contains the real app ID from registration in the LayerLog Developer Space. The dated notes below preserve the setup history.
 
-When ready to connect the account:
+For future account setup and development deployment (login and registration are already complete on Ian's Mac):
 
 1. Ian creates the required API token using the current Atlassian setup guide and enters it directly at the interactive prompt from `npm run forge -- login`. Do not send it through chat, a command argument, or a source file. Forge uses the operating system keychain.
 2. Select the Jira development site. Browser account sign-in alone does not establish CLI authentication or create a Jira site.
 3. Inspect actual account/billing requirements before registration/deployment. Get Ian's approval for any paid commitment; free allowances are not a guarantee that billing details are unnecessary.
-4. With the account and target authorized, run `npm run forge -- register` to replace the placeholder ID. Review that manifest change and rerun `npm run forge -- lint`.
+4. Use the existing app ID; do not register another app. Run `npm run forge -- lint` to validate it.
 5. With development deployment authorized, run `npm run forge -- deploy --environment development`, then `npm run forge -- install --environment development` and select the agreed site. Do not use production or publish a distribution link as part of this setup.
 6. Open a test issue as a user with edit access, choose LayerLog, and verify loading, resolved issue key, and retry behavior. Repeat with denied access and an expired session. Record observed results separately from unit tests.
 
@@ -80,3 +80,29 @@ Next: obtain Ian's decision to create a Developer Space named LayerLog and regis
 Ian authorized creating the LayerLog Developer Space and registering the app, with an explicit stop before billing consent. The CLI confirmed creation of the **LayerLog** space. Registration then presented combined Developer Terms, Privacy Policy, and excess-usage billing consent. The agent answered **No**, as instructed; registration exited with “You must accept the terms and conditions.”
 
 The space exists. The app remains unregistered, the manifest placeholder is unchanged, and no deployment occurred. Further registration requires Ian's explicit decision about the excess-usage billing agreement. Local implementation and checks can continue independently.
+
+
+## Registration complete — November 8, 2026
+
+Ian explicitly authorized accepting Developer Terms, Privacy Policy, and excess-usage billing consent, without adding a payment method or deploying. Standard `npm run forge -- register LayerLog` succeeded in the existing LayerLog Developer Space. The earlier `--personal` attempt failed because personal apps are not allowed in this space. Do not use that option for this project.
+
+Forge created development, staging, and production environment entries; no code was deployed to any of them. `npm run forge -- lint` then passed with **No issues found** (exit 0). The real app ID is committed in the manifest. No payment method was added by this task.
+
+## Cost controls and stopping testing
+
+Ian requested minimizing charges and shutting down unused app activity. Apply these defaults to future work:
+
+- Prefer local checks. Deploy only to the explicitly agreed development site/environment for planned integration tests; no automatic deployments.
+- Keep the MVP on demand: no scheduled triggers, polling, background loops, containers, or paid LLM calls. The current manifest has none of these.
+- Before and after hosted tests, review **Usage and charges** in the Developer Console. Document actual usage rather than promising a zero bill. Alerts, if configured later, are notifications rather than a spending cap.
+- At the end of testing, stop local tunnels and uninstall disposable development installations when they are no longer needed. Confirm the target site and preserve/export any real attempt data before uninstalling; do not assume a reinstall restores data.
+- Use the specific site and environment, not a broad batch operation:
+
+```sh
+npm run forge -- uninstall --site YOUR_TEST_SITE.atlassian.net --product Jira --environment development
+```
+
+- Verify the uninstall succeeded. Do not uninstall an installation still required for Ian's demo or judging without coordinating the timing.
+- Closing the browser or stopping a local tunnel does not remove a hosted installation. There is no always-running server in this scaffold to switch off. Avoid equating an idle app or an uninstall with a guaranteed zero balance: accrued usage still counts, and future SQL or other retained resources can have storage/reservation costs.
+
+Sources checked November 8, 2026: [Forge pricing](https://developer.atlassian.com/platform/forge/forge-platform-pricing/) (free allowances, usage charges, SQL stored-data billing) and [Forge uninstall](https://developer.atlassian.com/platform/forge/cli-reference/uninstall/) (site/environment-targeted removal). No uninstall is needed now because no app installation has been created.
