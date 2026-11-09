@@ -2,7 +2,7 @@
 
 ## Current implementation checkpoint — November 9, 2026
 
-On `feat/live-print-records`: read-only authenticated MQTT helper and issue-scoped add/edit/list attempts are implemented locally, including per-plate fields, idempotent creates, conditional edits, and explicit samples. See [verification and next work](LIVE_PRINTS.md). Real printer TLS passed. Next gates are private LAN-code entry to verify actual reports and explicit development deployment/install approval for hosted UI/storage tests. Exact submitted settings, selected filament mapping, job/plate association, and automatic Jira ingestion remain unfinished.
+On `feat/live-print-records`: read-only authenticated MQTT helper and issue-scoped add/edit/list attempts are implemented locally, including per-plate fields, idempotent creates, conditional edits, and explicit samples. See [verification and next work](LIVE_PRINTS.md). Real printer TLS passed. Development deployment/install is authorized and complete; hosted create/refresh/reopen/update passed with a labeled sample. Next: private LAN-code entry to verify actual printer reports, plus hosted permission and concurrent-edit tests. Exact submitted settings, selected filament mapping, job/plate association, and automatic Jira ingestion remain unfinished.
 
 ## Current priority — November 9, 2026
 

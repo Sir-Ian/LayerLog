@@ -26,7 +26,7 @@ The native issue panel now has add/edit/list forms for project, model revision, 
 
 Create requests have stable idempotency IDs, so repeating a lost response cannot duplicate the attempt. Revision-conditional transactions prevent concurrent edits from silently overwriting each other. The form preserves its draft on failures/conflicts and offers an explicit reopen action for edits. Cancel deliberately discards a draft; reload/navigation does not persist unsaved form state. No delete operation exists yet.
 
-The app requests `read:jira-work` and `storage:app`. No deployment or installation has occurred. Hosted rendering, actual Jira permission denial, and real Forge storage transactions must be exercised on the development site after Ian authorizes deployment/install. Local tests do not establish those integration results.
+The app requests `read:jira-work` and `storage:app`. Development version 2.0.0 is deployed and installed with Ian’s approval. Hosted rendering, create/list/reopen/update were verified with one labeled sample on PLAT-1. Actual denied-user and concurrent-editor checks remain pending. See [deployment results](SETUP.md#development-deployment-verified--november-9-2026).
 
 ## Verification and next work
 
@@ -34,7 +34,7 @@ The app requests `read:jira-work` and `storage:app`. No deployment or installati
 - `npm run audit:all`: checks both app and isolated CLI dependency trees.
 - `npm run forge -- lint`: validates manifest/API usage without deployment.
 - Real printer: TLS verified without credentials; authenticated status, disconnected-printer experience, and useful job fields remain pending.
-- Jira: hosted save/reload, two-editor conflicts, permission revocation, and rendering remain pending development deployment.
+- Jira: hosted save/refresh/reopen/update and rendering passed; two-editor conflicts and permission revocation remain pending.
 
 Next: inspect an actual sanitized report, establish job/plate identity and exact submitted settings access, then connect per-run evidence to Jira without guessing associations. After that: photo references, comparison, on-demand visual assessment with an approved budget. Periodic photos and automatic AI remain deferred.
 
