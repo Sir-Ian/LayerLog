@@ -16,7 +16,7 @@
     "test:imports": "python3 -m unittest discover -s tests -p 'test_bambu_*.py'",
     "camera": "node scripts/camera.mjs",
     "printer:status": "node scripts/printer-status.mjs",
-    "test:printer": "node --test tests/printer-status.test.mjs",
+    "test:printer": "node --test tests/printer-status.test.mjs tests/credentials.test.mjs",
     "test:camera": "node --test tests/camera.test.mjs tests/camera-tls.test.mjs",
     "forge": "node scripts/forge.mjs",
     "audit:production": "npm audit --omit=dev",

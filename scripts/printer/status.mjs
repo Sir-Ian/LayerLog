@@ -74,6 +74,7 @@ export function observeStatus({ host, code, certificate, signal, durationMs = 30
   return new Promise((resolve, reject) => {
     const events = [];
     let settled = false;
+    let stage = 'before MQTT login was accepted';
     const client = connect({ protocol: 'mqtts', host, port: 8883, protocolVersion: 4,
       clientId: `layerlog_${randomUUID().replaceAll('-', '').slice(0, 16)}`, username: 'bblp', password: code,
       clean: true, reconnectPeriod: 0, resubscribe: false, connectTimeout: 10000, keepalive: 15,
@@ -88,11 +89,13 @@ export function observeStatus({ host, code, certificate, signal, durationMs = 30
       client.end(true, {}, () => { if (error) reject(error); else resolve(events); });
     }
     client.on('error', () => finish(new Error('Printer authentication or TLS connection failed. Check the LAN code and certificate.')));
-    client.on('close', () => { if (!settled) finish(new Error('Printer disconnected before the observation finished.')); });
+    client.on('close', () => { if (!settled) finish(new Error(`Printer disconnected ${stage}. No automatic retry was attempted.`)); });
     client.on('connect', () => {
+      stage = 'after login, while subscribing to reports';
       // The only application operation is subscribing to reports; no publish API is used.
       client.subscribe('device/+/report', { qos: 0 }, (error, grants) => {
         if (error || !grants?.length || grants.some((grant) => grant.qos === 128)) finish(new Error('Printer denied read-only report subscription.'));
+        else stage = 'after the report subscription was accepted';
       });
     });
     client.on('message', (topic, payload, packet) => {
