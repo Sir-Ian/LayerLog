@@ -27,6 +27,7 @@ test-results/
 .worktrees/
 .tmp/
 *.log
+__pycache__/
 
 # Verified vendor CLI files downloaded by npm run setup:forge
 /tools/forge/out/
