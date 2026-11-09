@@ -1,5 +1,9 @@
 # Development plan
 
+## Current implementation checkpoint — November 9, 2026
+
+On `feat/live-print-records`: read-only authenticated MQTT helper and issue-scoped add/edit/list attempts are implemented locally, including per-plate fields, idempotent creates, conditional edits, and explicit samples. See [verification and next work](LIVE_PRINTS.md). Real printer TLS passed. Next gates are private LAN-code entry to verify actual reports and explicit development deployment/install approval for hosted UI/storage tests. Exact submitted settings, selected filament mapping, job/plate association, and automatic Jira ingestion remain unfinished.
+
 ## Current priority — November 9, 2026
 
 Latest correction from Ian: record actual Bambu print runs, including last-minute filament/color changes, and support multiple plates. Build/verify a read-only live connector and per-run settings evidence; file imports and UI observations are optional context. Preserve project → revision → plate → attempts, with separate reprints and uncertain associations. See [Bambu records](BAMBU_IMPORT.md). This supersedes a manual-entry-first or saved-file-as-truth workflow. Saved Jira records and their UI remain necessary; periodic photo capture and AI monitoring stay deferred.

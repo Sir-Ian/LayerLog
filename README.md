@@ -17,10 +17,12 @@ LayerLog is a Jira app built on Atlassian Forge that keeps a 3D-print project's 
 
 ## Status
 
+November 9 update: the [read-only status helper and Jira attempt workflow](docs/LIVE_PRINTS.md) are implemented locally. Printer TLS verification passed; authenticated real reports and hosted Jira save/reload remain unverified. The form supports per-plate attempts but automatic Bambu synchronization is not connected. No deployment or paid AI calls have occurred.
+
 Bambu integration: an optional local 3MF metadata importer and multi-plate progress model are implemented. Studio's visible history/settings have been logged locally. Actual print-run synchronization is the next integration priority so last-minute settings and filament selections are preserved. These tools are not yet connected to the Jira panel.
 
 Current status: the local A1 helper has captured one readable real-printer photo and stopped. Repeatability and unobstructed defect visibility remain unverified. Next: saved attempts, photo evidence, and comparison. Periodic capture and automatic AI monitoring are deferred TODOs in the development plan. No OpenAI calls or hosted deployment have been made.
 
-Local Forge scaffold started November 8, 2026: TypeScript, a native Jira issue panel, backend issue-access checks, and local test/build commands. Attempt persistence follows the camera proof. The app is registered in the LayerLog Developer Space and passes Forge lint; it is not deployed or installed. The private GitHub repository is [Sir-Ian/LayerLog](https://github.com/Sir-Ian/LayerLog). Ian has created a personal Atlassian account and signed in through his browser. Browser sign-in does not establish Forge CLI authentication.
+Local Forge scaffold started November 8, 2026: TypeScript, a native Jira issue panel, backend issue-access checks, and local test/build commands. Attempt persistence is now implemented locally and awaits hosted verification. The app is registered in the LayerLog Developer Space and passes Forge lint; it is not deployed or installed. The private GitHub repository is [Sir-Ian/LayerLog](https://github.com/Sir-Ian/LayerLog). Ian has created a personal Atlassian account and signed in through his browser. Browser sign-in does not establish Forge CLI authentication.
 
 The initial target is Codegeist 2026, with a proposed manufacturing/specialized-industries entry. Contest requirements and pricing must be rechecked before implementation and submission. Ian reviews and submits the contest entry himself.

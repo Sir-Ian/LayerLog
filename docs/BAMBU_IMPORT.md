@@ -1,5 +1,9 @@
 # Bambu records and multiple plates
 
+## Status helper checkpoint
+
+The [read-only status helper](LIVE_PRINTS.md) is implemented and tested with a local TLS MQTT simulator. Real A1 TLS validation passed; authenticated report contents remain unverified. Separate Jira attempt forms/storage are implemented locally, but neither importer nor status evidence is automatically ingested yet.
+
 ## Current implementation
 
 The optional local importer reads Bambu 3MF metadata and saves immutable JSON snapshots in Git-ignored `.tmp/bambu-imports`. It preserves explicit plate numbers/names, global settings, object/part overrides, and sliced estimates when available. It does not parse CAD geometry, extract archive files, run G-code, or communicate with the printer.

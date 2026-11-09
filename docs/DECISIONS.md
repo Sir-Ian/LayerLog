@@ -156,3 +156,11 @@ Source: Ian's request to own and solve the technical blocker; clean installs, au
 - Both app and toolchain audits now pass with zero vulnerabilities. `audit:all` explicitly covers both; no findings are hidden by excluding development dependencies. Retain API compatibility tests for the changed major versions.
 - This is a project-maintained dependency composition, not a claim of vendor support for the modified lock. Prefer a conventional vendor CLI install again once a clean compatible release is available.
 - The prior CLI dependency blocker is resolved for local validation. No deployment, installation, account/billing change, or external report was made. See [toolchain maintenance](../tools/forge/README.md).
+
+## November 9, 2026 — read-only reports and stored attempts
+
+Source: Ian’s requests for actual print-run settings, multi-plate support, and continued implementation. Details and references: [live print checkpoint](LIVE_PRINTS.md).
+
+- Added a manually invoked 30-second authenticated MQTT subscriber with per-session certificate-chain trust plus leaf pinning, no application publish calls, no retries, and allowlisted local evidence. Verified the real A1 TLS handshake without credentials; authenticated reports are pending private code entry. Do not promote partial reports/current AMS inventory into a submitted-job settings claim.
+- Added native Jira attempt forms and Forge custom entity storage with server-side issue access/edit checks, idempotent create IDs, and conditional revision updates. Tests exercise the service with an injected store; hosted transactions and UI remain unverified. `storage:app` is the new scope. No deployment/install occurred.
+- Added pinned MQTT.js 5.16.1 (local tooling) and Forge KVS 2.1.2 (runtime). Keep private reports and photos outside Git. Continue on a stacked feature branch until hosted acceptance supports integration into main. No background monitoring or paid services were enabled.

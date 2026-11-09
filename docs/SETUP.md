@@ -1,5 +1,9 @@
 # Local development
 
+## Printer status and stored attempts
+
+See [live print setup](LIVE_PRINTS.md). The lockfile adds exact `mqtt@5.16.1` for the local helper and `@forge/kvs@2.1.2` for Jira storage. Install with `npm ci`; no global packages or new account setup are needed. `npm run test:printer` uses OpenSSL and temporary loopback TLS servers. `npm run check` now includes printer and import tests as well. Hosted storage adds the `storage:app` scope; deployment/install still requires approval.
+
 ## Installed toolchain
 
 The initial scaffold uses Node.js 22.23.4, npm 10.9.9, and project-local Forge CLI 15.0.0. Exact dependencies are recorded in `package-lock.json`; `.nvmrc` selects the Node version for developers using nvm.
