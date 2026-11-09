@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ForgeReconciler, { Button, Heading, SectionMessage, Spinner, Stack, Text } from '@forge/react';
 import { invoke } from '@forge/bridge';
 import type { PanelContext } from '../shared/panel';
+import { RunPanel } from './RunPanel';
 
 type State = PanelContext | { status: 'loading' };
 
@@ -49,9 +50,7 @@ function App() {
     <Stack space="space.200">
       <Heading as="h2">Print attempts</Heading>
       <Text>{`Track model revisions, print settings, and test observations for ${state.issueKey}.`}</Text>
-      <SectionMessage title="Your print history starts here" appearance="information">
-        <Text>LayerLog is connected to this issue. Recording print attempts will be available in the next development milestone.</Text>
-      </SectionMessage>
+      <RunPanel />
     </Stack>
   );
 }
