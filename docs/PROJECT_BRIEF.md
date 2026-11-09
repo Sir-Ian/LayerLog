@@ -27,6 +27,8 @@ The smart-blind gear is Ian's proposed real-world demo. Actual measurements and 
 
 ## Optional AI extension
 
+November 8 update: Ian selected A1 camera capture as the immediate proof milestone, followed by on-demand OpenAI photo analysis. The intended output is an automatically saved visual pass/fail/unclear assessment, separate from his physical fit/function result. A manually started Mac helper is acceptable; continuous monitoring is not requested. See [camera scope and verification](CAMERA_CAPTURE.md). This supersedes the earlier manual-photo-only ordering; API spending and deployment remain gated.
+
 An evidence-grounded assistant could summarize changes and flag unsupported conclusions. Any suggestion must link back to recorded evidence, identify uncertainty, and require human judgment. Do not promise mechanical safety, run invented simulations, or claim that a part will fit or survive a load.
 
 AI is a later gate, not a prerequisite for basic tracking. Verify contest-specific AI-coding rules, provider pricing, and data handling before adopting a service. Do not send private design files or user records to an external model without authorization.

@@ -19,6 +19,8 @@ On other machines, install a Forge-supported Node 22 release (at least 22.23.4),
 
 ## Checks
 
+For the local printer-camera helper, run `npm run camera` in your own Terminal; see [Camera capture](CAMERA_CAPTURE.md). No additional runtime package is required. `npm run test:camera` requires `openssl` and permission for a temporary loopback TLS test server, and is included in `npm run check`.
+
 | Command | What it verifies |
 | --- | --- |
 | `npm run lint` | ESLint checks application and test source. |
@@ -26,7 +28,7 @@ On other machines, install a Forge-supported Node 22 release (at least 22.23.4),
 | `npm test` | Node's test runner checks issue identity validation, access failures, and safe errors using an injected Jira adapter. |
 | `npm run build` | TypeScript compiles source into ignored `dist/`; this is a local compilation check, not Forge deployment packaging. |
 | `npm run test:toolchain` | Checks the patched dependency APIs used by Forge. |
-| `npm run check` | Runs lint, typecheck, app tests, toolchain tests, and build. |
+| `npm run check` | Runs lint, typecheck, app tests, toolchain tests, camera tests, and build. |
 | `npm run audit:all` | Audits both the app and the isolated Forge toolchain. |
 | `npm run forge -- lint` | Forge-specific manifest/API checks; may require authenticated account access. |
 | `git diff --check` | Checks changed lines for whitespace errors. |

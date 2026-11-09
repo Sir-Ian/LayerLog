@@ -1,5 +1,11 @@
 # Development plan
 
+## Current priority — November 8, 2026
+
+Ian approved camera capture before persistence. The `feat/a1-camera-proof` branch starts from the existing scaffold commit `317540b` to preserve its unmerged toolchain work. The local helper is implemented; hardware verification is pending. Follow [Camera capture](CAMERA_CAPTURE.md) before starting later milestones. Do not merge/tag this as a proven camera milestone until repeat captures and image quality have been checked on Ian's A1.
+
+Then build persistent add/edit/list attempts with all fields visible and opt-in labeled gear samples; associate snapshots; then add on-demand OpenAI visual assessment. AI records visual pass/fail/unclear automatically, while physical testing remains manual. No continuous monitoring, live AI spending, or deployment is authorized by this implementation. The original sequence below remains historical context where it conflicts with this update.
+
 ## Proposed technical direction
 
 Use Atlassian Forge with TypeScript, a React-based Jira issue panel, Forge-hosted backend/storage where suitable, and Jira attachment references for photos if permission and API constraints permit. This is a starting proposal, not a verified scaffold. Confirm current Forge-supported UI/runtime choices, storage limits, attachment handling, and minimum scopes before implementation.
