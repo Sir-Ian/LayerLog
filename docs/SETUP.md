@@ -19,6 +19,8 @@ On other machines, install a Forge-supported Node 22 release (at least 22.23.4),
 
 ## Checks
 
+Optional Bambu project metadata import: `npm run import:bambu -- /absolute/path/to/project.3mf`. Requires Python 3.11+ (`python3`; 3.12 is installed here), with no additional Python packages. `npm run test:imports` is included in `npm run check`. See [Bambu import and live-tracking boundaries](BAMBU_IMPORT.md).
+
 For the local printer-camera helper, run `npm run camera` in your own Terminal; see [Camera capture](CAMERA_CAPTURE.md). No additional runtime package is required. `npm run test:camera` requires `openssl` and permission for a temporary loopback TLS test server, and is included in `npm run check`.
 
 | Command | What it verifies |

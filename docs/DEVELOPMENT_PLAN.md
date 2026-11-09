@@ -2,6 +2,8 @@
 
 ## Current priority — November 9, 2026
 
+Latest correction from Ian: record actual Bambu print runs, including last-minute filament/color changes, and support multiple plates. Build/verify a read-only live connector and per-run settings evidence; file imports and UI observations are optional context. Preserve project → revision → plate → attempts, with separate reprints and uncertain associations. See [Bambu records](BAMBU_IMPORT.md). This supersedes a manual-entry-first or saved-file-as-truth workflow. Saved Jira records and their UI remain necessary; periodic photo capture and AI monitoring stay deferred.
+
 Build the core saved-attempt workflow next, followed by photo evidence and revision comparison. One real A1 snapshot has been captured and opened successfully; repeat capture, freshness, and unobstructed defect visibility still need verification. Those checks remain open but do not block core record development. Automatic monitoring is deferred at Ian's request.
 
 ### TODO: periodic capture and automatic visual monitoring (deferred)

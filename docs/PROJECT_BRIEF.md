@@ -18,6 +18,8 @@ The smart-blind gear is Ian's proposed real-world demo. Actual measurements and 
 
 ## First-version scope
 
+November 9 refinement: projects have multiple plates, and every plate can have repeated print attempts. Prefer recording actual Bambu jobs and their print-time settings/filament selections over manual entry. Saved-file metadata and UI observations remain supporting evidence, with explicit uncertainty when the actual job cannot be matched. [Integration status](BAMBU_IMPORT.md) distinguishes implemented local tools from pending live synchronization.
+
 - A Jira issue panel with a list of print attempts and an add/edit form.
 - Attempt records: ID, issue reference, model revision/link, material, nozzle/layer/infill and other optional settings, notes, timestamps, observed result, and test evidence references.
 - Explicit units for measurements and temperatures; distinguish missing values from zero.
