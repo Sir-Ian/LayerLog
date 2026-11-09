@@ -1,6 +1,6 @@
 # Decisions and open questions
 
-Updated: November 8, 2026.
+Updated: November 9, 2026.
 
 ## Agreed with Ian
 
@@ -34,6 +34,14 @@ The prior official-source review reported a December 22, 2026 deadline at 2 p.m.
 ## Recording future decisions
 
 Add a dated entry with the choice, reason, source, and consequences. Separate user-approved choices from proposals and verification results. Keep this file short; move significant technical decisions into individual decision records if needed.
+
+## November 9, 2026 — defer automatic monitoring; prioritize core records
+
+Source: Ian's request in chat to make periodic capture and eventual automatic analysis a TODO while other project features are built.
+
+- Desired future behavior: periodic photos during prints to preserve evidence and eventually detect problems early with automatic OpenAI checks. Keep this in the [development backlog](DEVELOPMENT_PLAN.md), not the current implementation.
+- Prioritize saved attempts, photo evidence, and comparison. Capture cadence (60 seconds was suggested), retention, analysis budget, and alert behavior remain to be decided before enabling monitoring. No background capture or paid calls started.
+- Observed hardware progress: one real 1536 × 1080 JPEG captured on A1 firmware 01.08.01.00, with LAN Only Mode off; the helper process was no longer running afterward. The printhead obscures the part, so this does not establish defect-detection quality, freshness, or repeatability. Photos stay local and ignored by Git.
 
 ## November 8, 2026 — camera-first implementation
 

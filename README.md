@@ -16,7 +16,7 @@ LayerLog is a Jira app built on Atlassian Forge that keeps a 3D-print project's 
 
 ## Status
 
-Current milestone: the local A1 snapshot helper is implemented with simulated-camera tests; real-printer capture is still unverified. This camera proof now precedes attempt persistence. See the camera guide above. No OpenAI calls or hosted deployment have been made.
+Current status: the local A1 helper has captured one readable real-printer photo and stopped. Repeatability and unobstructed defect visibility remain unverified. Next: saved attempts, photo evidence, and comparison. Periodic capture and automatic AI monitoring are deferred TODOs in the development plan. No OpenAI calls or hosted deployment have been made.
 
 Local Forge scaffold started November 8, 2026: TypeScript, a native Jira issue panel, backend issue-access checks, and local test/build commands. Attempt persistence follows the camera proof. The app is registered in the LayerLog Developer Space and passes Forge lint; it is not deployed or installed. The private GitHub repository is [Sir-Ian/LayerLog](https://github.com/Sir-Ian/LayerLog). Ian has created a personal Atlassian account and signed in through his browser. Browser sign-in does not establish Forge CLI authentication.
 

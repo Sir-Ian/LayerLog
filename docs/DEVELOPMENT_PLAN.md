@@ -1,6 +1,19 @@
 # Development plan
 
-## Current priority — November 8, 2026
+## Current priority — November 9, 2026
+
+Build the core saved-attempt workflow next, followed by photo evidence and revision comparison. One real A1 snapshot has been captured and opened successfully; repeat capture, freshness, and unobstructed defect visibility still need verification. Those checks remain open but do not block core record development. Automatic monitoring is deferred at Ian's request.
+
+### TODO: periodic capture and automatic visual monitoring (deferred)
+
+- [ ] Capture periodically during an explicitly tracked print session and associate each image with the correct attempt; include final/completion, failure, and cancellation evidence where supported.
+- [ ] Verify read-only printer status detection, session start/stop, reconnection, freshness, and behavior when the Mac sleeps or the helper stops. Avoid misattributing buffered images.
+- [ ] Add automatic OpenAI checks for visible defects and early warnings, retaining evidence and uncertainty separately from physical fit/function results. No automatic printer control.
+- [ ] Before enabling: agree capture/analysis cadence, photo retention, secure credential handling, data-use consent, and enforced usage/spending limits. The suggested 60-second interval is a proposal, not an approved requirement.
+
+Prerequisites: persistent attempts, photo association, usable camera evidence, and evaluated on-demand visual analysis. This TODO authorizes no background service, scheduled capture, paid API call, or notification integration now.
+
+## Previous priority — November 8, 2026
 
 Ian approved camera capture before persistence. The `feat/a1-camera-proof` branch starts from the existing scaffold commit `317540b` to preserve its unmerged toolchain work. The local helper is implemented; hardware verification is pending. Follow [Camera capture](CAMERA_CAPTURE.md) before starting later milestones. Do not merge/tag this as a proven camera milestone until repeat captures and image quality have been checked on Ian's A1.
 

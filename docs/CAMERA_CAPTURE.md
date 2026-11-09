@@ -1,6 +1,6 @@
 # A1 camera capture proof
 
-The helper passes local tests, including a simulated TLS camera. **Ian's A1 has not been connected or photographed yet.** Firmware compatibility and image quality remain unverified; this milestone is not complete.
+The helper passes local tests, including a simulated TLS camera. On November 9, 2026, Ian captured one real 1536 × 1080 JPEG on A1 firmware 01.08.01.00 with LAN Only Mode off. The image opened successfully and the helper process had exited. The printhead obscures the part; repeatability, freshness, and defect visibility remain unverified.
 
 ## Run on your Mac
 
@@ -33,7 +33,7 @@ Do not change LAN-only mode, Developer Mode, firmware, or router settings merely
 
 ## Hardware acceptance
 
-All hardware checks are **unrun**, awaiting Ian's IP/firmware and local credential entry:
+One capture and subsequent process exit are verified. Remaining hardware checks:
 
 - Capture twice; both files open and show the current gear/bed scene.
 - With the printer idle, change a harmless visible object and confirm a subsequent image reflects it. Never reach into a moving printer.
@@ -53,4 +53,4 @@ Sources reviewed November 8, 2026: [Bambu's integration policy](https://blog.bam
 
 Verification on November 8, 2026: `npm run check` passed lint, typecheck, 5 app tests, 4 toolchain tests, 8 camera tests, and build. The first sandboxed attempt blocked the loopback listener with EPERM; the authorized rerun passed. CLI `--help` and interactive Ctrl-C cancellation passed. `git diff --check` and all 19 relative links in changed documentation passed. No physical printer, image-quality, OpenAI, or hosted Jira test ran.
 
-After hardware verification: persistent Jira attempts, attached photo evidence, then on-demand OpenAI visual pass/fail/unclear results separate from physical testing. Live API use requires secure credentials and an agreed spending ceiling. Development deployment remains separately authorized.
+Next: persistent Jira attempts, photo evidence, and comparison; remaining camera checks can proceed alongside that work. Periodic capture and eventual automatic OpenAI checks are [deferred TODOs](DEVELOPMENT_PLAN.md) at Ian's request on November 9. Live API use requires secure credentials and an agreed spending ceiling. Development deployment remains separately authorized.
