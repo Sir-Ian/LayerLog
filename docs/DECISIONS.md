@@ -173,3 +173,22 @@ Source: Ian's explicit “yes you can deploy” with the constraint to watch cos
 - Deployed and installed only development version 2.0.0 on the existing demo site. New payment details/agreements and paid capabilities were not enabled.
 - Fixed TypeScript emit/root configuration required by the actual Forge bundler; local typecheck/build and deploy lint passed. Verified active entity indexes and hosted create/list/reopen/update using one labeled sample in PLAT-1.
 - Usage dashboard displayed $0 charges/$0 forecast before and after tests, with up to one-hour reporting delay. No hard zero-dollar cap has been established. Retain on-demand-only behavior and review usage around future tests. Keep the installation available for Ian; no background service or AI calls are active. See [deployment results](SETUP.md#development-deployment-verified--november-9-2026).
+
+
+## November 9, 2026 — evidence and comparison implementation
+
+Source: Ian’s request to continue testing and building after authorizing development deployment, while avoiding charges.
+
+- Added optional structured settings, deterministic missing-evidence prompts, and two-attempt comparison, preserving unknown versus zero and separating machine/physical outcomes.
+- Use existing issue attachment references for the first evidence UI. Verify ownership/read access server-side at save and on-demand display; retain source/capture metadata separately from images. This supports the eventual camera pipeline and does not substitute manual uploads for camera proof.
+- Uncontrolled text inputs with functional state updates avoid feeding remote UI-render latency back into each keystroke; verify rapid typing in the hosted panel. Keep draft data in memory on save failure.
+- No new scopes, dependencies, paid AI, or background tasks. See [evidence workflow](EVIDENCE_COMPARISON.md). Real authenticated printer reports remain blocked on private local code entry.
+
+
+## November 9, 2026 — remember printer pairing securely
+
+Source: Ian said repeated access-code entry is impractical and asked us to obtain print details from available context.
+
+- Camera and status helpers now share one-time macOS Keychain pairing, including the approved leaf fingerprint. No real code is migrated from history, files, Studio, or chat. First pairing needs hidden local entry; subsequent same-certificate requests reuse it. Changed certificates fail closed. See [pairing](PRINTER_PAIRING.md).
+- Real status attempt disconnected and produced no report. Add connection-stage diagnostics; do not guess an authentication or firmware cause. Pure credential tests and native source typecheck passed; actual Keychain pairing remains unrun.
+- Observed the actual Device job separately from the unrelated open preparation project. Store the dated real observation in ignored `.tmp/bambu-observations/smart-blind-current.json`. The focus is ZemiSmart MTP1 metal beaded-chain fit. The current revision’s exact design rationale remains unverified; its filename is not authoritative settings evidence.

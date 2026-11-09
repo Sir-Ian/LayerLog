@@ -1,5 +1,8 @@
 # Read-only printer reports and saved Jira attempts
 
+**Pairing update (November 9):** camera and status now share [one-time macOS Keychain pairing](PRINTER_PAIRING.md). This supersedes earlier per-run/never-saved credential instructions below. No real code has been seeded; first pairing still requires hidden local entry.
+
+
 ## Implemented locally — November 9, 2026
 
 The status helper authenticates to local MQTT over TLS, subscribes to `device/+/report`, observes for 30 seconds (at most 100 usable reports), disconnects, and saves selected fields under ignored `.tmp/layerlog-status-*/status.json`. There are no application publish calls, printer controls, cloud logins, automatic retries, or background service. MQTT authentication/subscription and transport keepalive packets are necessary for reading reports.

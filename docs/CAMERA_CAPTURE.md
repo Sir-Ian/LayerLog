@@ -1,5 +1,8 @@
 # A1 camera capture proof
 
+**Pairing update (November 9):** camera and status now share [one-time macOS Keychain pairing](PRINTER_PAIRING.md). This supersedes earlier per-run/never-saved credential instructions below. No real code has been seeded; first pairing still requires hidden local entry.
+
+
 The helper passes local tests, including a simulated TLS camera. On November 9, 2026, Ian captured one real 1536 × 1080 JPEG on A1 firmware 01.08.01.00 with LAN Only Mode off. The image opened successfully and the helper process had exited. The printhead obscures the part; repeatability, freshness, and defect visibility remain unverified.
 
 ## Run on your Mac

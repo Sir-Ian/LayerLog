@@ -8,8 +8,10 @@ LayerLog is a Jira app built on Atlassian Forge that keeps a 3D-print project's 
 
 - [Project brief](docs/PROJECT_BRIEF.md): problem, product scope, example workflow, and acceptance criteria.
 - [Local setup](docs/SETUP.md): toolchain, checks, and secure account setup.
+- [One-time printer pairing](docs/PRINTER_PAIRING.md): remember access securely in macOS Keychain.
 - [A1 camera capture](docs/CAMERA_CAPTURE.md): local helper and real-printer verification.
 - [Bambu records and plates](docs/BAMBU_IMPORT.md): metadata imports, multi-plate tracking, and pending live integration.
+- [Photo evidence and comparison](docs/EVIDENCE_COMPARISON.md): structured settings, image references, and evidence checks.
 - [Development plan](docs/DEVELOPMENT_PLAN.md): milestones, proposed architecture, and next steps.
 - [Decisions and open questions](docs/DECISIONS.md): what is agreed and what still needs verification.
 - [Git workflow](docs/GIT_WORKFLOW.md): small commits, feature branches, review, and recovery.
