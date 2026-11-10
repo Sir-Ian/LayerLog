@@ -1,5 +1,34 @@
 # Development plan
 
+## Integration checkpoint — November 9, 2026
+
+Ian requested review and branch integration followed by one merge to main. Integrate the existing stacked branches as a development checkpoint, preserving the outstanding hardware and hosted checks. This supersedes the earlier instruction to keep the camera work unmerged; it does not declare camera acceptance or a release. Saved attempts, photo references, and comparison are now implemented. See the [integration review](reviews/INTEGRATION_2026-11-09.md) for current checks and follow-up work; older handoffs below remain historical.
+
+## Current implementation checkpoint — November 9, 2026
+
+On `feat/live-print-records`: read-only authenticated MQTT helper and issue-scoped add/edit/list attempts are implemented locally, including per-plate fields, idempotent creates, conditional edits, and explicit samples. See [verification and next work](LIVE_PRINTS.md). Real printer TLS passed. Development deployment/install is authorized and complete; hosted create/refresh/reopen/update passed with a labeled sample. Next: private LAN-code entry to verify actual printer reports, plus hosted permission and concurrent-edit tests. Exact submitted settings, selected filament mapping, job/plate association, and automatic Jira ingestion remain unfinished.
+
+## Current priority — November 9, 2026
+
+Latest correction from Ian: record actual Bambu print runs, including last-minute filament/color changes, and support multiple plates. Build/verify a read-only live connector and per-run settings evidence; file imports and UI observations are optional context. Preserve project → revision → plate → attempts, with separate reprints and uncertain associations. See [Bambu records](BAMBU_IMPORT.md). This supersedes a manual-entry-first or saved-file-as-truth workflow. Saved Jira records and their UI remain necessary; periodic photo capture and AI monitoring stay deferred.
+
+Build the core saved-attempt workflow next, followed by photo evidence and revision comparison. One real A1 snapshot has been captured and opened successfully; repeat capture, freshness, and unobstructed defect visibility still need verification. Those checks remain open but do not block core record development. Automatic monitoring is deferred at Ian's request.
+
+### TODO: periodic capture and automatic visual monitoring (deferred)
+
+- [ ] Capture periodically during an explicitly tracked print session and associate each image with the correct attempt; include final/completion, failure, and cancellation evidence where supported.
+- [ ] Verify read-only printer status detection, session start/stop, reconnection, freshness, and behavior when the Mac sleeps or the helper stops. Avoid misattributing buffered images.
+- [ ] Add automatic OpenAI checks for visible defects and early warnings, retaining evidence and uncertainty separately from physical fit/function results. No automatic printer control.
+- [ ] Before enabling: agree capture/analysis cadence, photo retention, secure credential handling, data-use consent, and enforced usage/spending limits. The suggested 60-second interval is a proposal, not an approved requirement.
+
+Prerequisites: persistent attempts, photo association, usable camera evidence, and evaluated on-demand visual analysis. This TODO authorizes no background service, scheduled capture, paid API call, or notification integration now.
+
+## Previous priority — November 8, 2026
+
+Ian approved camera capture before persistence. The `feat/a1-camera-proof` branch starts from the existing scaffold commit `317540b` to preserve its unmerged toolchain work. The local helper is implemented; hardware verification is pending. Follow [Camera capture](CAMERA_CAPTURE.md) before starting later milestones. Do not merge/tag this as a proven camera milestone until repeat captures and image quality have been checked on Ian's A1.
+
+Then build persistent add/edit/list attempts with all fields visible and opt-in labeled gear samples; associate snapshots; then add on-demand OpenAI visual assessment. AI records visual pass/fail/unclear automatically, while physical testing remains manual. No continuous monitoring, live AI spending, or deployment is authorized by this implementation. The original sequence below remains historical context where it conflicts with this update.
+
 ## Proposed technical direction
 
 Use Atlassian Forge with TypeScript, a React-based Jira issue panel, Forge-hosted backend/storage where suitable, and Jira attachment references for photos if permission and API constraints permit. This is a starting proposal, not a verified scaffold. Confirm current Forge-supported UI/runtime choices, storage limits, attachment handling, and minimum scopes before implementation.
@@ -8,7 +37,7 @@ Keep domain validation and comparison logic independent of UI and platform calls
 
 ## Milestones and suggested branches
 
-1. `chore/forge-scaffold`: confirm contest/AI and cost gates, secure CLI authentication, verify supported runtime, scaffold and smoke-test the smallest issue panel.
+1. `chore/forge-scaffold`: record contest/AI assumption and confirm cost gates, secure CLI authentication, verify supported runtime, scaffold and smoke-test the smallest issue panel.
 2. `feat/print-attempts`: define schema and validation; implement persistence and add/edit/list flows with tests.
 3. `feat/revision-comparison`: implement comparison and deterministic evidence checklist, with unit tests and a readable interface.
 4. `feat/demo-workflow`: add labeled sample gear data, polish empty/error states and accessibility, test end-to-end behavior.
@@ -19,7 +48,7 @@ Create branches when work begins, not an empty branch for every future milestone
 
 ## Before development starts
 
-- Confirm current Codegeist eligibility, category, deliverables, and whether AI coding assistance is allowed. The published rules were not explicit in prior research.
+- Recheck Codegeist requirements before submission. Ian has authorized starting on the assumption that AI coding assistance is allowed; no organizer ruling has been established.
 - Inspect installed development tools before installing or upgrading anything.
 - Complete Forge CLI authentication through a secure flow. Never put a token in chat, source, logs, or command history.
 - Check available developer-site options and current Forge billing requirements. Ask before billing setup or paid services; do not assume account creation makes all usage free.
@@ -31,7 +60,7 @@ Establish documented lint, typecheck, unit-test, and build commands with the sca
 
 ## Current handoff
 
-Planning and Git version control are ready; private GitHub setup is recorded in the repository. This planning task does not verify live remote refs. There is no executable app or test suite yet. The next engineering task is the minimal Forge scaffold after the gates above are resolved, not an automatic deployment or contest submission.
+Planning and Git version control are ready; private GitHub setup is recorded in the repository. This planning task does not verify live remote refs. The local Forge scaffold now includes a native issue panel and unit tests. See [Setup](SETUP.md) for actual commands and account prerequisites. Next: authenticate/register for the authorized development site, verify the panel in Jira, then implement attempt persistence.
 
 
 ## Implementation handoff — November 8, 2026
@@ -42,13 +71,13 @@ This is a proposed implementation sequence, not evidence that an app exists. Sta
 
 Owner: the next scaffold agent, with Ian handling credentials and organizer clarification.
 
-1. Resolve the AI-assistance question recorded in [Decisions](DECISIONS.md). Preserve the organizer's answer and source/date before substantial AI-assisted implementation.
+1. Follow Ian's decision to proceed with AI assistance, recorded in [Decisions](DECISIONS.md). Any later organizer clarification should be recorded with its source/date.
 2. Inspect Node, package manager, and Forge CLI versions without reading credential files. Verify supported versions against current Forge documentation; pin the chosen runtime and package manager in setup instructions.
 3. Verify development-site availability, usage allowances, and payment requirements. Browser login is not CLI authentication. Let Ian complete any necessary secure authentication; never request a token in chat.
 4. Select the smallest supported Jira issue-panel template. Prefer UI Kit if its supported controls cover the forms and comparison; use Custom UI only if a specific requirement warrants it. Record the choice, storage API, scope list, and current documentation sources.
 5. Separate local scaffolding from Forge registration, installation, and deployment. Record the intended development site and obtain authorization for account mutations/deployment before executing them.
 
-Exit evidence: a dated environment record, resolved rules gate, dependency versions, chosen architecture, and an explicit account/deployment scope. Unavailable access is a blocker, not a successful smoke test.
+Exit evidence: a dated environment record, recorded contest assumption, dependency versions, chosen architecture, and an explicit account/deployment scope. Unavailable access is a blocker, not a successful smoke test.
 
 ### Milestone 1: smallest issue panel (`chore/forge-scaffold`)
 
@@ -58,7 +87,7 @@ Suggested commit boundaries:
 - Add lint, typecheck, unit-test, and build scripts plus exact local setup commands.
 - Add the panel's empty/loading/error states and document the authorized development installation smoke check.
 
-Proposed layout, adjusted to the supported template: `src/domain/` for records and pure rules; `src/backend/` for resolvers, authorization, and storage; `src/frontend/` for the panel; `tests/` for behavior tests; `docs/` for setup and decisions. These directories do not exist yet.
+Proposed layout, adjusted to the supported template: `src/domain/` for records and pure rules; `src/backend/` for resolvers, authorization, and storage; `src/frontend/` for the panel; `tests/` for behavior tests; `docs/` for setup and decisions. The initial scaffold uses the frontend/backend/shared directories; domain records will be added with persistence.
 
 Done when: documented local checks pass, the panel can identify its authorized issue context, and any authorized development installation opens correctly. If no deployment is authorized, report the integration check as unrun and the milestone as locally verified only.
 

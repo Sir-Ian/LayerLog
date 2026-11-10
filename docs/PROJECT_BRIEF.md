@@ -18,6 +18,8 @@ The smart-blind gear is Ian's proposed real-world demo. Actual measurements and 
 
 ## First-version scope
 
+November 9 refinement: projects have multiple plates, and every plate can have repeated print attempts. Prefer recording actual Bambu jobs and their print-time settings/filament selections over manual entry. Saved-file metadata and UI observations remain supporting evidence, with explicit uncertainty when the actual job cannot be matched. [Integration status](BAMBU_IMPORT.md) distinguishes implemented local tools from pending live synchronization.
+
 - A Jira issue panel with a list of print attempts and an add/edit form.
 - Attempt records: ID, issue reference, model revision/link, material, nozzle/layer/infill and other optional settings, notes, timestamps, observed result, and test evidence references.
 - Explicit units for measurements and temperatures; distinguish missing values from zero.
@@ -26,6 +28,10 @@ The smart-blind gear is Ian's proposed real-world demo. Actual measurements and 
 - A clean demonstration that uses sample data and an ordinary Jira issue.
 
 ## Optional AI extension
+
+November 9 update: periodic capture and eventual automatic OpenAI checks for early visible defects are desired future features, explicitly deferred to the [development backlog](DEVELOPMENT_PLAN.md). Build core saved attempts, photo evidence, and comparison first. This supersedes the earlier statement that continuous monitoring was not requested; it is now a future goal, not enabled functionality.
+
+November 8 update: Ian selected A1 camera capture as the immediate proof milestone, followed by on-demand OpenAI photo analysis. The intended output is an automatically saved visual pass/fail/unclear assessment, separate from his physical fit/function result. A manually started Mac helper is acceptable; continuous monitoring is not requested. See [camera scope and verification](CAMERA_CAPTURE.md). This supersedes the earlier manual-photo-only ordering; API spending and deployment remain gated.
 
 An evidence-grounded assistant could summarize changes and flag unsupported conclusions. Any suggestion must link back to recorded evidence, identify uncertainty, and require human judgment. Do not promise mechanical safety, run invented simulations, or claim that a part will fit or survive a load.
 

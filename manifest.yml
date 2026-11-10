@@ -1,0 +1,47 @@
+modules:
+  jira:issuePanel:
+    - key: layerlog-issue-panel
+      resource: main
+      resolver:
+        function: resolver
+      render: native
+      title: LayerLog
+      icon: https://developer.atlassian.com/platform/forge/images/icons/issue-panel-icon.svg
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: src/frontend/index.tsx
+permissions:
+  scopes:
+    - read:jira-work
+    - storage:app
+app:
+  storage:
+    entities:
+      - name: print-run
+        attributes:
+          id:
+            type: string
+          issueId:
+            type: string
+          createdAt:
+            type: string
+          updatedAt:
+            type: string
+          revision:
+            type: integer
+          creationHash:
+            type: string
+          body:
+            type: any
+        indexes:
+          - name: by-issue-created
+            partition:
+              - issueId
+            range:
+              - createdAt
+  runtime:
+    name: nodejs22.x
+  id: ari:cloud:ecosystem::app/764fbe43-232b-48d6-ad35-1c24b8eb7ab0
