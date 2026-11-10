@@ -35,6 +35,15 @@ The prior official-source review reported a December 22, 2026 deadline at 2 p.m.
 
 Add a dated entry with the choice, reason, source, and consequences. Separate user-approved choices from proposals and verification results. Keep this file short; move significant technical decisions into individual decision records if needed.
 
+## November 9, 2026 — actual print runs and multi-plate projects
+
+Source: Ian's request to log Bambu projects/history/current jobs/settings, add multi-plate support, and account for changes made just before printing.
+
+- Prioritize read-only print-run tracking over manual re-entry or static project imports. Per-attempt evidence must reflect the submitted job and selected filaments, not later Studio edits or current AMS contents. API completeness is not yet verified.
+- Model separate plates and repeated attempts; report project progress across plates without conflating printer completion with physical validation.
+- Ian prefers UI logging instead of Downloads permission changes. Visible Studio observations are logged locally; they are dated snapshots and do not satisfy the live-sync requirement.
+- Added optional bounded 3MF metadata import and tested multi-plate progress logic on `feat/bambu-project-import`, based on the existing camera branch. Actual project data and UI observations stay in ignored `.tmp`, outside the remote backup. No printer-control command, cloud login, or continuous watcher was added. See [integration status](BAMBU_IMPORT.md).
+
 ## November 9, 2026 — defer automatic monitoring; prioritize core records
 
 Source: Ian's request in chat to make periodic capture and eventual automatic analysis a TODO while other project features are built.

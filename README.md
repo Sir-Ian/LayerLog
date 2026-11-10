@@ -9,12 +9,15 @@ LayerLog is a Jira app built on Atlassian Forge that keeps a 3D-print project's 
 - [Project brief](docs/PROJECT_BRIEF.md): problem, product scope, example workflow, and acceptance criteria.
 - [Local setup](docs/SETUP.md): toolchain, checks, and secure account setup.
 - [A1 camera capture](docs/CAMERA_CAPTURE.md): local helper and real-printer verification.
+- [Bambu records and plates](docs/BAMBU_IMPORT.md): metadata imports, multi-plate tracking, and pending live integration.
 - [Development plan](docs/DEVELOPMENT_PLAN.md): milestones, proposed architecture, and next steps.
 - [Decisions and open questions](docs/DECISIONS.md): what is agreed and what still needs verification.
 - [Git workflow](docs/GIT_WORKFLOW.md): small commits, feature branches, review, and recovery.
 - [Agent instructions](AGENTS.md): operating rules for anyone working in this repository.
 
 ## Status
+
+Bambu integration: an optional local 3MF metadata importer and multi-plate progress model are implemented. Studio's visible history/settings have been logged locally. Actual print-run synchronization is the next integration priority so last-minute settings and filament selections are preserved. These tools are not yet connected to the Jira panel.
 
 Current status: the local A1 helper has captured one readable real-printer photo and stopped. Repeatability and unobstructed defect visibility remain unverified. Next: saved attempts, photo evidence, and comparison. Periodic capture and automatic AI monitoring are deferred TODOs in the development plan. No OpenAI calls or hosted deployment have been made.
 
