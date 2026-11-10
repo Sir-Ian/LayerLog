@@ -2,6 +2,14 @@
 
 Updated: November 9, 2026.
 
+## November 9, 2026 — reviewed integration checkpoint
+
+Source: Ian's request to review, integrate the branches, and make one merge to main.
+
+- Integrate the existing five-branch implementation stack through `codex/integration-review`, preserving branch merge boundaries and making one final merge to main. Keep existing branches and the separate planning worktree; no push or deployment is included.
+- This authorization supersedes the earlier keep-unmerged instruction for the camera branch. Hardware acceptance and hosted verification remain open; integration does not certify a release or contest eligibility.
+- Full local checks passed (44 tests), both dependency audits reported zero vulnerabilities, and Forge lint passed. No blocking defect was identified. See the [review record and next steps](reviews/INTEGRATION_2026-11-09.md).
+
 ## Agreed with Ian
 
 - Name: LayerLog. Working name only; trademark/domain availability has not been checked.

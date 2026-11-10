@@ -19,6 +19,8 @@ LayerLog is a Jira app built on Atlassian Forge that keeps a 3D-print project's 
 
 ## Status
 
+November 9 integration review: the current code includes saved per-plate attempts, structured settings, Jira photo references, comparison, and one-time macOS Keychain pairing. The latest recorded development deployment is version 2.1.0; the pairing changes have local verification only. The full 44-test suite, lint, typecheck, build, both dependency audits, and Forge lint passed during review. See the [integration review and remaining verification](docs/reviews/INTEGRATION_2026-11-09.md). The dated checkpoint paragraphs below describe earlier stages.
+
 November 9 update: the [read-only status helper and Jira attempt workflow](docs/LIVE_PRINTS.md) are implemented locally. Printer TLS verification passed; authenticated real printer reports remain unverified; hosted Jira create/refresh/reopen/update now pass. The form supports per-plate attempts but automatic Bambu synchronization is not connected. Development version 2.0.0 is deployed and installed on the demo site; no paid AI calls have occurred.
 
 Bambu integration: an optional local 3MF metadata importer and multi-plate progress model are implemented. Studio's visible history/settings have been logged locally. Actual print-run synchronization is the next integration priority so last-minute settings and filament selections are preserved. These tools are not yet connected to the Jira panel.
