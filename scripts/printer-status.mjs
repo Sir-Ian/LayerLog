@@ -1,3 +1,4 @@
+import { printerCredential, keychain } from './keychain/credentials.mjs';
 import process from 'node:process';
 import { parseArgs } from 'node:util';
 import { mkdir, mkdtemp, writeFile } from 'node:fs/promises';
@@ -22,15 +23,15 @@ async function prompt(label, hidden = false) {
   finally { rl.removeListener('close', stop); rl.close(); muted.destroy(); if (hidden) process.stdout.write('\n'); }
 }
 try {
-  const { values } = parseArgs({ options: { host: { type: 'string' }, help: { type: 'boolean' } } });
+  const { values } = parseArgs({ options: { host: { type: 'string' }, help: { type: 'boolean' }, 'forget-credential': { type: 'boolean' } } });
   if (values.help) {
-    process.stdout.write('Usage: npm run printer:status -- [--host PRIVATE_IP]\nObserve report messages for 30 seconds, save sanitized evidence locally, and exit. Hidden LAN-code prompt; no printer commands, cloud calls, or automatic retries.\n');
+    process.stdout.write('Usage: npm run printer:status -- [--host PRIVATE_IP]\nObserve report messages for 30 seconds, save sanitized evidence locally, and exit. One-time Keychain pairing; --forget-credential removes pairing; no printer commands, cloud calls, or automatic retries.\n');
   } else {
     const host = validateHost(values.host ?? await prompt('A1 local IP address: '));
+    if (values['forget-credential']) { await keychain('delete', host); process.stdout.write('Removed the saved LayerLog printer credential.\n'); process.exit(0); }
     const certificate = await probeCertificate(host, controller.signal);
     process.stdout.write(`Printer status certificate SHA-256: ${certificate.fingerprint}\nConfirm this IP on your printer and use a trusted LAN. First-use certificate trust does not independently verify device identity.\n`);
-    if (await prompt('Trust this device for this session? Type yes: ') !== 'yes') throw new Error('Canceled before authentication.');
-    const code = await prompt('LAN access code (hidden, never saved): ', true);
+    const code = await printerCredential(host, certificate.fingerprint, prompt);
     if (!/^[\x21-\x7e]{1,32}$/.test(code)) throw new Error('Invalid LAN code format.');
     process.stdout.write('Listening for read-only printer reports for 30 seconds…\n');
     const startedAt = new Date().toISOString();

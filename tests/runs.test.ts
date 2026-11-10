@@ -52,3 +52,11 @@ test('invalid fields and failed storage return safe failures', async () => {
   store.create = async () => { throw new Error('private upstream information'); };
   assert.deepEqual(await service('create', {}, { requestId, body }), { status: 'error' });
 });
+test('photos must be authorized on the current issue before a write', async () => {
+  const { store, rows } = fixture();
+  const photos = [{ attachmentId: '999', capturedAt: '', source: 'unknown', caption: '' }];
+  let checked = '';
+  const service = runService(store, async () => ({ issueId: '123', accountId: 'user' }), async (issueId, ids) => { checked = issueId; return !ids.includes('999'); });
+  assert.equal((await service('create', {}, { requestId, body: { ...body, photos } })).status, 'invalid');
+  assert.equal(checked, '123'); assert.equal(rows.size, 0);
+});

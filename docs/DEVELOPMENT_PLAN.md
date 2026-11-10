@@ -1,5 +1,9 @@
 # Development plan
 
+## Integration checkpoint — November 9, 2026
+
+Ian requested review and branch integration followed by one merge to main. Integrate the existing stacked branches as a development checkpoint, preserving the outstanding hardware and hosted checks. This supersedes the earlier instruction to keep the camera work unmerged; it does not declare camera acceptance or a release. Saved attempts, photo references, and comparison are now implemented. See the [integration review](reviews/INTEGRATION_2026-11-09.md) for current checks and follow-up work; older handoffs below remain historical.
+
 ## Current implementation checkpoint — November 9, 2026
 
 On `feat/live-print-records`: read-only authenticated MQTT helper and issue-scoped add/edit/list attempts are implemented locally, including per-plate fields, idempotent creates, conditional edits, and explicit samples. See [verification and next work](LIVE_PRINTS.md). Real printer TLS passed. Development deployment/install is authorized and complete; hosted create/refresh/reopen/update passed with a labeled sample. Next: private LAN-code entry to verify actual printer reports, plus hosted permission and concurrent-edit tests. Exact submitted settings, selected filament mapping, job/plate association, and automatic Jira ingestion remain unfinished.

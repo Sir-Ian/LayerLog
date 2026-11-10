@@ -11,7 +11,7 @@ export type AccessCheck = (context: unknown, write: boolean) => Promise<{ issueI
 const hash = (value: string) => createHash('sha256').update(value).digest('hex');
 const object = (value: unknown): Record<string, unknown> => value && typeof value === 'object' && !Array.isArray(value) ? value as Record<string, unknown> : {};
 
-export function runService(store: RunStore, access: AccessCheck) {
+export function runService(store: RunStore, access: AccessCheck, checkPhotos: (issueId: string, ids: string[]) => Promise<boolean> = async (_issueId, ids) => ids.length === 0) {
   return async (operation: 'list' | 'get' | 'create' | 'update', context: unknown, input: unknown): Promise<RunsReply> => {
     try {
       const identity = await access(context, operation === 'create' || operation === 'update');
@@ -30,6 +30,7 @@ export function runService(store: RunStore, access: AccessCheck) {
       }
       let body;
       try { body = validateDraft(data.body); } catch (error) { return { status: 'invalid', message: (error as Error).message }; }
+      if (!await checkPhotos(identity.issueId, (body.photos ?? []).map(photo => photo.attachmentId))) return { status: 'invalid', message: 'A selected photo is unavailable on this issue. Refresh photos and remove unavailable references before saving.' };
       const now = new Date().toISOString();
       if (operation === 'create') {
         if (typeof data.requestId !== 'string' || !/^[a-zA-Z0-9-]{16,80}$/.test(data.requestId)) return { status: 'invalid', message: 'A save request ID is required.' };

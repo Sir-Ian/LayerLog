@@ -1,5 +1,8 @@
 # Local development
 
+**Pairing update (November 9):** camera and status now share [one-time macOS Keychain pairing](PRINTER_PAIRING.md). This supersedes earlier per-run/never-saved credential instructions below. No real code has been seeded; first pairing still requires hidden local entry.
+
+
 ## Printer status and stored attempts
 
 See [live print setup](LIVE_PRINTS.md). The lockfile adds exact `mqtt@5.16.1` for the local helper and `@forge/kvs@2.1.2` for Jira storage. Install with `npm ci`; no global packages or new account setup are needed. `npm run test:printer` uses OpenSSL and temporary loopback TLS servers. `npm run check` now includes printer and import tests as well. Hosted storage adds the `storage:app` scope; development deployment/install was authorized and completed November 9, 2026.

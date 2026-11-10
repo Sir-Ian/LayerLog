@@ -1,3 +1,4 @@
+import { printerCredential, keychain } from './keychain/credentials.mjs';
 import process from 'node:process';
 import { Buffer } from 'node:buffer';
 import { Writable } from 'node:stream';
@@ -32,20 +33,21 @@ async function prompt(label, hidden = false) {
 }
 
 async function main() {
-  const { values } = parseArgs({ options: { host: { type: 'string' }, firmware: { type: 'string' }, help: { type: 'boolean' } } });
+  const { values } = parseArgs({ options: { host: { type: 'string' }, firmware: { type: 'string' }, help: { type: 'boolean' }, 'forget-credential': { type: 'boolean' } } });
   if (values.help) {
-    process.stdout.write('LayerLog A1 camera proof\nUsage: npm run camera -- [--host PRIVATE_IP] [--firmware VERSION]\nPrompts locally for certificate trust and hidden LAN access code. Saves one JPEG and metadata under .tmp/, then exits. No cloud services or printer commands.\n');
+    process.stdout.write('LayerLog A1 camera proof\nUsage: npm run camera -- [--host PRIVATE_IP] [--firmware VERSION]\nPairs once with macOS Keychain and remembers the certificate. Use --forget-credential to remove pairing. Saves one JPEG and metadata under .tmp/, then exits. No cloud services or printer commands.\n');
     return;
   }
   const host = validateHost(values.host ?? await prompt('A1 local IP address: '));
+    if (values['forget-credential']) { await keychain('delete', host); process.stdout.write('Removed the saved LayerLog printer credential.\n'); return; }
   const firmware = values.firmware ?? await prompt('Firmware version shown on the A1 (or unknown): ');
   if (!/^[\w. -]{1,64}$/.test(firmware)) throw new Error('Enter a firmware version or unknown (up to 64 letters, digits, dots, spaces, or hyphens).');
   process.stdout.write('Checking the camera certificate without sending credentials…\n');
   const fingerprint = await cameraRequest({ host, signal: controller.signal });
   process.stdout.write(`Printer certificate SHA-256: ${fingerprint}\nFirst-use trust: this fingerprint alone does not prove device identity. Confirm the IP on your A1 and use a trusted LAN. No printer settings will be changed.\n`);
-  if ((await prompt('Trust this device for this capture? Type yes: ')) !== 'yes') throw new Error('Canceled before authentication.');
+  const code = await printerCredential(host, fingerprint, prompt);
   const image = await cameraRequest({ host, fingerprint,
-    code: await prompt('Printer LAN access code (hidden, never saved): ', true), signal: controller.signal });
+    code, signal: controller.signal });
   const receivedAt = new Date().toISOString();
   if (controller.signal.aborted) throw new Error('Capture canceled.');
   const base = resolve('.tmp');

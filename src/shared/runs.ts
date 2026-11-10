@@ -1,3 +1,4 @@
+import { validatePhotos, type PhotoReference } from './evidence';
 export const MACHINE_STATES = ['unknown', 'queued', 'preparing', 'printing', 'paused', 'completed', 'failed', 'canceled'] as const;
 export const PHYSICAL_RESULTS = ['not-tested', 'pass', 'fail', 'inconclusive'] as const;
 export interface RunDraft {
@@ -12,6 +13,13 @@ export interface RunDraft {
   machineStatus: typeof MACHINE_STATES[number];
   physicalResult: typeof PHYSICAL_RESULTS[number];
   sample: boolean;
+  photos?: PhotoReference[];
+  layerHeightMm?: string;
+  nozzleDiameterMm?: string;
+  infillPercent?: string;
+  nozzleTemperatureC?: string;
+  bedTemperatureC?: string;
+  measurements?: string;
 }
 export interface RunRecord {
   id: string;
@@ -39,7 +47,16 @@ export function validateDraft(value: unknown): RunDraft {
   if (!Number.isInteger(data.plateNumber) || Number(data.plateNumber) < 1 || Number(data.plateNumber) > 999) throw new Error('Plate number must be between 1 and 999.');
   if (!MACHINE_STATES.includes(data.machineStatus as RunDraft['machineStatus']) || !PHYSICAL_RESULTS.includes(data.physicalResult as RunDraft['physicalResult'])) throw new Error('Choose a valid machine status and physical result.');
   if (typeof data.sample !== 'boolean') throw new Error('Sample provenance is required.');
+  const optional = (key: string, maximum = 4000) => data[key] === undefined ? '' : text(key, maximum);
+  const numeric = (key: string, min: number, max: number, exclusive = false) => {
+    const value = optional(key, 32);
+    if (value && (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(value) || !Number.isFinite(Number(value)) || Number(value) < min || Number(value) > max || (exclusive && Number(value) === min))) throw new Error(`${key} must be ${exclusive ? 'greater than' : 'at least'} ${min} and at most ${max}, or blank if unknown.`);
+    return value ? String(Number(value)) : '';
+  };
   return {
+    photos: validatePhotos(data.photos), measurements: optional('measurements'),
+    layerHeightMm: numeric('layerHeightMm', 0, 10, true), nozzleDiameterMm: numeric('nozzleDiameterMm', 0, 10, true),
+    infillPercent: numeric('infillPercent', 0, 100), nozzleTemperatureC: numeric('nozzleTemperatureC', 0, 1000), bedTemperatureC: numeric('bedTemperatureC', 0, 500),
     project: text('project', 160, true), modelRevision: text('modelRevision', 160, true),
     plateNumber: data.plateNumber as number, plateName: text('plateName', 160),
     material: text('material', 160), filamentColor: text('filamentColor', 160),

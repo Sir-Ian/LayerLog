@@ -8,14 +8,18 @@ LayerLog is a Jira app built on Atlassian Forge that keeps a 3D-print project's 
 
 - [Project brief](docs/PROJECT_BRIEF.md): problem, product scope, example workflow, and acceptance criteria.
 - [Local setup](docs/SETUP.md): toolchain, checks, and secure account setup.
+- [One-time printer pairing](docs/PRINTER_PAIRING.md): remember access securely in macOS Keychain.
 - [A1 camera capture](docs/CAMERA_CAPTURE.md): local helper and real-printer verification.
 - [Bambu records and plates](docs/BAMBU_IMPORT.md): metadata imports, multi-plate tracking, and pending live integration.
+- [Photo evidence and comparison](docs/EVIDENCE_COMPARISON.md): structured settings, image references, and evidence checks.
 - [Development plan](docs/DEVELOPMENT_PLAN.md): milestones, proposed architecture, and next steps.
 - [Decisions and open questions](docs/DECISIONS.md): what is agreed and what still needs verification.
 - [Git workflow](docs/GIT_WORKFLOW.md): small commits, feature branches, review, and recovery.
 - [Agent instructions](AGENTS.md): operating rules for anyone working in this repository.
 
 ## Status
+
+November 9 integration review: the current code includes saved per-plate attempts, structured settings, Jira photo references, comparison, and one-time macOS Keychain pairing. The latest recorded development deployment is version 2.1.0; the pairing changes have local verification only. The full 44-test suite, lint, typecheck, build, both dependency audits, and Forge lint passed during review. See the [integration review and remaining verification](docs/reviews/INTEGRATION_2026-11-09.md). The dated checkpoint paragraphs below describe earlier stages.
 
 November 9 update: the [read-only status helper and Jira attempt workflow](docs/LIVE_PRINTS.md) are implemented locally. Printer TLS verification passed; authenticated real printer reports remain unverified; hosted Jira create/refresh/reopen/update now pass. The form supports per-plate attempts but automatic Bambu synchronization is not connected. Development version 2.0.0 is deployed and installed on the demo site; no paid AI calls have occurred.
 
