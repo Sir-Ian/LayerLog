@@ -1,6 +1,6 @@
 # Decisions and open questions
 
-Updated: November 8, 2026.
+Updated: November 9, 2026.
 
 ## Agreed with Ian
 
@@ -34,6 +34,24 @@ The prior official-source review reported a December 22, 2026 deadline at 2 p.m.
 ## Recording future decisions
 
 Add a dated entry with the choice, reason, source, and consequences. Separate user-approved choices from proposals and verification results. Keep this file short; move significant technical decisions into individual decision records if needed.
+
+## November 9, 2026 — defer automatic monitoring; prioritize core records
+
+Source: Ian's request in chat to make periodic capture and eventual automatic analysis a TODO while other project features are built.
+
+- Desired future behavior: periodic photos during prints to preserve evidence and eventually detect problems early with automatic OpenAI checks. Keep this in the [development backlog](DEVELOPMENT_PLAN.md), not the current implementation.
+- Prioritize saved attempts, photo evidence, and comparison. Capture cadence (60 seconds was suggested), retention, analysis budget, and alert behavior remain to be decided before enabling monitoring. No background capture or paid calls started.
+- Observed hardware progress: one real 1536 × 1080 JPEG captured on A1 firmware 01.08.01.00, with LAN Only Mode off; the helper process was no longer running afterward. The printhead obscures the part, so this does not establish defect-detection quality, freshness, or repeatability. Photos stay local and ignored by Git.
+
+## November 8, 2026 — camera-first implementation
+
+Source: Ian's approved implementation plan and choices in this chat; [camera research and verification](CAMERA_CAPTURE.md).
+
+- Start with a manually invoked local Mac helper for the A1. Use on-demand capture; no printer control, background monitoring, or cloud calls. Do not change printer settings without explaining the actual requirement first.
+- Implement the community-documented TLS/JPEG protocol with Node built-ins. Explicit per-run certificate trust precedes hidden local credential entry; pin the authenticated connection to the probed certificate. This is first-use trust, not vendor certification.
+- Keep captures in ignored `.tmp` with source/time/hash metadata. Skip the initial buffered frame, but do not claim freshness without visual confirmation.
+- Later: all-fields-visible attempt forms, opt-in samples, and automatically saved OpenAI visual pass/fail/unclear separate from physical results. Credentials/spending ceiling and development deployment are later gates.
+- Branch from the existing clean scaffold rather than integrating its untested hosted behavior into main. No remote push or milestone tag. Actual printer IP/firmware and hardware capture are still pending; tests do not establish camera compatibility or AI accuracy.
 
 
 ## November 8, 2026 — implementation planning and rules recheck
