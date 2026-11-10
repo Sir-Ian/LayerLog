@@ -1,5 +1,9 @@
 # Local development
 
+## Printer status and stored attempts
+
+See [live print setup](LIVE_PRINTS.md). The lockfile adds exact `mqtt@5.16.1` for the local helper and `@forge/kvs@2.1.2` for Jira storage. Install with `npm ci`; no global packages or new account setup are needed. `npm run test:printer` uses OpenSSL and temporary loopback TLS servers. `npm run check` now includes printer and import tests as well. Hosted storage adds the `storage:app` scope; development deployment/install was authorized and completed November 9, 2026.
+
 ## Installed toolchain
 
 The initial scaffold uses Node.js 22.23.4, npm 10.9.9, and project-local Forge CLI 15.0.0. Exact dependencies are recorded in `package-lock.json`; `.nvmrc` selects the Node version for developers using nvm.
@@ -39,7 +43,7 @@ Native UI Kit renders inside Jira. It is not a standalone website, and there is 
 
 ## Authentication and development deployment
 
-The app is **registered but not deployed or installed**. The demo development site is https://one-atlas-xldf.atlassian.net (active; expires February 6, 2027). `manifest.yml` contains the real app ID from registration in the LayerLog Developer Space. The dated notes below preserve the setup history.
+The app is **deployed and installed in development**, version 2.0.0, verified November 9, 2026. The demo development site is https://one-atlas-xldf.atlassian.net (active; expires February 6, 2027). `manifest.yml` contains the real app ID from registration in the LayerLog Developer Space. The dated notes below preserve the setup history.
 
 For future account setup and development deployment (login and registration are already complete on Ian's Mac):
 
@@ -50,7 +54,7 @@ For future account setup and development deployment (login and registration are 
 5. With development deployment authorized, run `npm run forge -- deploy --environment development`, then `npm run forge -- install --environment development` and select the agreed site. Do not use production or publish a distribution link as part of this setup.
 6. Open a test issue as a user with edit access, choose LayerLog, and verify loading, resolved issue key, and retry behavior. Repeat with denied access and an expired session. Record observed results separately from unit tests.
 
-## Scaffold boundaries
+## Original scaffold boundaries (historical)
 
 The panel checks the current issue through a backend resolver and Jira's `asUser()` API. The frontend supplies no issue ID. Only issue identity is returned, never issue description or raw upstream errors. The manifest requests `read:jira-work`; there is no storage, external model, or write scope yet.
 
@@ -151,3 +155,16 @@ No payment details or additional billing-consent prompt appeared during provisio
 Use `npm run setup:forge` after a fresh checkout's `npm ci`. The Forge executable is downloaded from the official npm package, verified against a pinned SHA-512 hash, and run with the dependency tree committed in `tools/forge/package-lock.json`. This is a project-maintained dependency composition; the executable source is not modified. No global CLI replacement or credential change is required.
 
 `npm run audit:all` now audits both roots and passes with zero vulnerabilities. `npm run check` includes five app tests and four toolchain tests. Authenticated Forge lint passes. The earlier dependency blocker is resolved for the verified local workflow; live deployment and UI verification remain separate next steps requiring the previously agreed authorization. No app code was deployed during remediation.
+
+
+## Development deployment verified — November 9, 2026
+
+Ian authorized development deployment/install while requesting no paid usage. Deployed version **2.0.0** to development and installed on the existing `one-atlas-xldf.atlassian.net` demo site. CLI installation listing reports **Up-to-date**; `print-run` indexes `by-issue-created` and `by-key` are **ACTIVE**. Staging and production were not deployed.
+
+Fixed deployment packaging: root `tsconfig.json` permits emit into ignored `dist` and explicitly sets `rootDir` for TypeScript 6. `npm run typecheck` still passes `--noEmit`. Both typecheck and local build passed after the fix; deploy's own lint and bundling passed. No dependency changes.
+
+Hosted smoke test on seeded demo issue PLAT-1: LayerLog DEV rendered; the empty list loaded; one explicitly labeled sample gear attempt was created, survived Refresh, reopened, and updated through the conditional transaction (revision 3). The final note is synthetic and describes the smoke test. No real print result or physical measurement was added. Native character-by-character browser typing produced garbled draft text during testing; replacing the whole field with paste corrected it. Fast manual typing should be checked separately. Live concurrent-editor conflicts and denied-user access are still untested; service unit tests cover those paths.
+
+Usage and charges before and after testing displayed **$0 extra usage and $0 forecast**. Console says usage can lag by up to one hour, so this is an observed dashboard value, not a guaranteed final bill or a hard cap. No payment method, new billing agreement, paid AI, SQL, containers, polling, or scheduled triggers were enabled. The app remains installed for Ian's testing and only invokes functions on interaction. No background cost watcher was created. Check usage during future test sessions and uninstall the exact development installation when no longer needed, preserving any useful records first.
+
+Sources: authenticated CLI deploy/install/index outputs, rendered in-app browser panel, and [Forge pricing](https://developer.atlassian.com/platform/forge/forge-platform-pricing/) checked November 9. Functions and KVS have free allowances; overages are billable. Alerts are not a hard spending cap.
